@@ -7,6 +7,7 @@ import EditVolunteerForm from './components/EditVolunteerForm'
 import Navbar from './components/Navbar'
 import VolunteerDetail from './components/VolunteerDetail'
 import NotFound from './components/NotFound'
+import NewMember from './components/NewMember';
 
 function App() {
   const [volunteers, setVolunteers] = useState([])
@@ -48,6 +49,7 @@ function App() {
         <Route path='/volunteer/:id' element={    <VolunteerDetail deleteVolunteer={deleteVolunteer} /> } />
         <Route exact path='/' element={  <Home volunteers={volunteers} /> } />
         <Route element={ <NotFound />} />
+        <Route path='/users/new' element={ <NewMember />} />
       </Routes> 
   </div>
   );

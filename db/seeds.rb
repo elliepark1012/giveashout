@@ -38,11 +38,15 @@ Volunteer.create(
     img_url: "https://d6osdab9etm5d.cloudfront.net/client_data/apple.benevity.org/files/imagecache/wpg_1080x250/userfile-64806b703dae21.27390428.png"
 )
 
-User.create(username: Faker::Name.first_name, email: Faker::Internet.email, password_disgest:Faker::Internet.password)
-User.create(username: Faker::Name.first_name, email: Faker::Internet.email, password_disgest:Faker::Internet.password)
-User.create(username: Faker::Name.first_name, email: Faker::Internet.email, password_disgest:Faker::Internet.password)
-User.create(username: Faker::Name.first_name, email: Faker::Internet.email, password_disgest:Faker::Internet.password)
-User.create(username: Faker::Name.first_name, email: Faker::Internet.email, password_disgest:Faker::Internet.password)
+(1..20).each do |id|
+    User.create!(id: id, 
+    username: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: "password", 
+    password_confirmation: "password",
+)
+end
+
 
 Contact.create(name: Faker::Name.name, email: Faker::Internet.email, volunteer_id: 1)
 Contact.create(name: Faker::Name.name, email: Faker::Internet.email, volunteer_id: 1)
@@ -55,9 +59,9 @@ Contact.create(name: Faker::Name.name, email: Faker::Internet.email, volunteer_i
 Contact.create(name: Faker::Name.name, email: Faker::Internet.email, volunteer_id: 5)
 Contact.create(name: Faker::Name.name, email: Faker::Internet.email, volunteer_id: 5)
 
-Signup.create(user_id: 1, volunteer_id: 4, price: 1)
-Signup.create(user_id: 2, volunteer_id: 3, price: 1)
-Signup.create(user_id: 2, volunteer_id: 2, price: 1)
-Signup.create(user_id: 3, volunteer_id: 5, price: 1)
-Signup.create(user_id: 4, volunteer_id: 1, price: 1)
-Signup.create(user_id: 4, volunteer_id: 3, price: 1)
+Signup.create(user_id:1, volunteer_id: 4, price: 1)
+Signup.create(user_id:1, volunteer_id: 3, price: 1)
+Signup.create(user_id:2, volunteer_id: 2, price: 1)
+Signup.create(user_id:2, volunteer_id: 5, price: 1)
+Signup.create(user_id:3, volunteer_id: 1, price: 1)
+Signup.create(user_id:4, volunteer_id: 3, price: 1)

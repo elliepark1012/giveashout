@@ -7,6 +7,7 @@ function NavBar() {
             <ul>
                 <li><Link className="navlink" to='/volunteers/new'>New Volunteer</Link></li>
                 <li><Link className="navlink" to='/'> Home</Link></li>
+                <li><Link className="navlink" to='/users/new'> New Member</Link></li>
            </ul>
         </div>
         <img src={logo} className='logo'/>

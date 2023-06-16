@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
     end 
 
      def render_not_found(error)
-        render json: {errors: {error.model : "Not Found"}}, status: :not_found
+        render json: {errors: {error.model => "Not Found"}}, status: :not_found
     end 
 end
