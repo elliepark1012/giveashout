@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Routes, Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Home from './components/Home'
 import VolunteerForm from './components/VolunteerForm'
@@ -13,10 +13,10 @@ function App() {
   const [errors, setErrors] = useState(false)
 
   useEffect(() => {
-    fetch('volunteers')
+    fetch('/volunteers')
     .then(res => {
       if(res.ok){
-        res.json().then(setVolunteers)
+        res.json().then(volunteers => setVolunteers(volunteers))
       } else {
         res.json().then(data => setErrors(data.error))
       }
@@ -40,33 +40,18 @@ function App() {
   if(errors) return <h1>{errors}</h1>
 
   return (
-  <>
-    <Navbar /> 
-      <Switch>
-        
-        <Route path='/volunteers/new'>
-          <VolunteerForm addVolunteer={addVolunteer} />
-        </Route>
-
-        <Route path='/volunteers/:id/edit'>
-          <EditVolunteerForm updateVolunteer={updateVolunteer} />
-        </Route>
-        
-        <Route path='/volunteers/:id/'>
-          <VolunteerDetail deleteVolunteer={deleteVolunteer} />
-        </Route>
-
-        <Route exact path='/'>
-          <Home volunteers={volunteers} />
-        </Route>
-
-        <Route>
-          <NotFound />
-        </Route>
-        
-      </Switch>
-  </>
+  <div id="app">
+    <Navbar/>
+      <Routes>
+        <Route path='/volunteers/new' element={ <VolunteerForm addVolunteer={addVolunteer} />} /> 
+        <Route path='/volunteers/:id/edit' element={ <EditVolunteerForm updateVolunteer={updateVolunteer} />} />
+        <Route path='/volunteers/:id/' element={    <VolunteerDetail deleteVolunteer={deleteVolunteer} /> } />
+        <Route exact path='/' element={  <Home volunteers={volunteers} /> } />
+        <Route element={ <NotFound />} />
+      </Routes> 
+  </div>
   );
 }
 
 export default App;
+

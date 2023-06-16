@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams  } from 'react-router'
+import { useParams  } from 'react-router-dom'
 
 function EditVolunteerForm({updateVolunteer}) {
     const [formData, setFormData] = useState({
@@ -40,7 +40,7 @@ function EditVolunteerForm({updateVolunteer}) {
     return (
         <div>
             {errors?errors.map(e => <div>{e}</div>) : null}
-            <Form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit}>
                 <label>Title</label>
                 <input type ='text' name='title' value={formData.title} onChange={handleChange} />
 
@@ -57,7 +57,7 @@ function EditVolunteerForm({updateVolunteer}) {
                 <textarea type='text' rows='4' cols='50' name='about' value={formData.about} onChange={handleChange} />
                 
                 <input type='submit' value='Update Volunteer' />
-            </Form>
+            </form>
             </div>
     )
 }

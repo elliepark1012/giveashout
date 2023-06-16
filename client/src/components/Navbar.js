@@ -1,13 +1,13 @@
-import {Link} from 'react-router'
+import {Link} from 'react-router-dom'
 
 function NavBar() {
     return (
-        <Nav>
+        <div>
             <ul>
                 <li><Link to='/volunteers/new'>New Volunteer</Link></li>
                 <li><Link to='/'> Home</Link></li>
            </ul>
-        </Nav>
+        </div>
     )
 }
 

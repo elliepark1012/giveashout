@@ -6,6 +6,7 @@ function VolunteerCard({volunteer}) {
     return (
         <>
         <div>
+        
             <Link to={'/volunteers/${id}'}> <h2>{title}</h2></Link>
             <p>{date}</p>
             <p>{location}</p>

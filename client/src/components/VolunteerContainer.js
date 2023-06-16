@@ -3,7 +3,7 @@ import VolunteerCard from './VolunteerCard'
 function VolunteerContainer({volunteers}) {
     return (
         <div>
-            <Title>Give A Shout</Title>
+            <title>Give A Shout</title>
             <div>
                 {volunteers.map(volunteer => <ul><VolunteerCard key={volunteer.id} volunteer={volunteer}/></ul>)}
             </div>

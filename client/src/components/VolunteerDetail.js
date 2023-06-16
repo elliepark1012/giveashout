@@ -1,4 +1,4 @@
-import { Link, useParams, useHistory, __RouterContext } from 'react-router'
+import {  useParams, useNavigate } from 'react-router'
 import { useEffect, useState } from 'react'
 
 function VolunteerDetail({deleteVolunteer}) {
@@ -6,7 +6,7 @@ function VolunteerDetail({deleteVolunteer}) {
     const [errors, setErrors] = useState()
 
     const params = useParams()
-    const history = useHistory()
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetch(`/volunteers/${params.id}`)
@@ -27,7 +27,7 @@ function VolunteerDetail({deleteVolunteer}) {
           .then(res => {
             if(res.ok){
               deleteVolunteer(id)
-              history.push('/')
+              navigate.push('/')
             } else {
               res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
             }
@@ -42,14 +42,14 @@ function VolunteerDetail({deleteVolunteer}) {
         })
         .then(res => {
           if(res.ok){
-            history.push('/users/1')
+            navigate.push('/users/1')
           } else {
             res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
           }
         })
       }
 
-      if(loading) return <h1>Loading</h1>
+      // if(loading) return <h1>Loading</h1>
       if(errors) return <h1>{errors}</h1>
 
       const {id, title, date, location, about, img_url, contacts} = volunteer
@@ -67,7 +67,7 @@ function VolunteerDetail({deleteVolunteer}) {
                     </div>
                     <img src={img_url}/>
                 </div>
-                <button><Link to={`/volunteers/${id}/edit`}>Edit Volunteer</Link></button>
+                {/* <button><Link to={`/volunteers/${id}/edit`}>Edit Volunteer</Link></button> */}
                 <button onClick={handleDelete}>Delete Volunteer</button>
                 <button onClick={handleSignUp} >Sign Up!</button>
         </div>
