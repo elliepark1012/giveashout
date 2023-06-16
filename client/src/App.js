@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes, Link } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Home from './components/Home'
 import VolunteerForm from './components/VolunteerForm'
@@ -44,8 +44,8 @@ function App() {
     <Navbar/>
       <Routes>
         <Route path='/volunteers/new' element={ <VolunteerForm addVolunteer={addVolunteer} />} /> 
-        <Route path='/volunteers/:id/edit' element={ <EditVolunteerForm updateVolunteer={updateVolunteer} />} />
-        <Route path='/volunteers/:id/' element={    <VolunteerDetail deleteVolunteer={deleteVolunteer} /> } />
+        <Route path='/volunteer/:id/edit' element={ <EditVolunteerForm updateVolunteer={updateVolunteer} />} />
+        <Route path='/volunteer/:id' element={    <VolunteerDetail deleteVolunteer={deleteVolunteer} /> } />
         <Route exact path='/' element={  <Home volunteers={volunteers} /> } />
         <Route element={ <NotFound />} />
       </Routes> 

@@ -3,7 +3,7 @@ Volunteer.create(
     date: "Jun 24, 2023, 12:00 PM - Jun 24, 2023, 6:00 PM EDT",
     location: "Domino Park in Brooklyn 15 River St, Brooklyn, NY 11249",
     about: "NYC Pride is proud to host Youth Pride, the annual celebration of and for LGBTQIA+ and ally teens. An afternoon of music, fashion, dancing, and more for LGBTQIA+ and Ally Teens.",
-    img_url: "https://d6osdab9etm5d.cloudfront.net/client_data/apple.benevity.org/files/imagecache/wpg_1080x250/userfile-645e71adbcd8d4.77021425.jpeghttps://d6osdab9etm5d.cloudfront.net/client_data/apple.benevity.org/files/imagecache/wpg_1080x250/userfile-645e71adbcd8d4.77021425.jpeg"
+    img_url: "https://www.flourishaustralia.org.au/sites/default/files/styles/teaser_360x200/public/2023-05/pride_month.png?h=125a58ae&itok=0KdFNPQa"
 )
 
 Volunteer.create(

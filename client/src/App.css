@@ -6,7 +6,7 @@ body {
 
 .navbar ul{
   list-style: none;
-  background-color: black;
+  background-color:black;
   padding: 0;
   margin: 25px 0 0 0;
 }
@@ -28,4 +28,81 @@ body {
 
 .navbar .navlink:hover{
   background-color: rgb(245, 116, 2);
+}
+
+.cardcontainer ul {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  border-color: aliceblue;
+  border-style: solid;
+  border-width: 5px;
+  margin: 20px;
+}
+
+.card {
+    flex-direction:row;
+    justify-content:start;
+    font-family:Arial, sans-serif;
+    margin:50px;
+    text-align: center;
+}
+
+.cardlink {
+   text-decoration: none;
+   color: white;
+   text-transform: uppercase;
+}
+
+.cardimage {
+  width: 700px;
+  height: 300px;
+}
+
+.carddetail {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  border-color: aliceblue;
+  border-style: solid;
+  border-width: 5px;
+  margin-right: 150px;
+  margin-left: 150px;
+  text-align: center;
+}
+
+.button-container {
+  margin-bottom: 30px;
+  margin-right: 150px;
+  margin-left: 150px;
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr; /* Equal width columns */
+  grid-gap: 30px; /* Adjust the gap between buttons as needed */
+}
+
+button {
+  color: black;
+  text-decoration: none;
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+}
+
+.buttonlink {
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+}
+
+.contact {
+  list-style: none;
+}
+
+input {
+  color: black;
 }

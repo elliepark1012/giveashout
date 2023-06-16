@@ -9,7 +9,7 @@ function NavBar() {
                 <li><Link className="navlink" to='/'> Home</Link></li>
            </ul>
         </div>
-        <img src={logo}/>
+        <img src={logo} className='logo'/>
         </>
     )
 }

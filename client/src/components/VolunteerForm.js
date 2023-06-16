@@ -19,7 +19,7 @@ function VolunteerForm({addVolunteer}) {
 
     function onSubmit(e){
         e.preventDefault()
-        fetch('/volunteers',{
+        fetch('http://localhost:3000/volunteers',{
             method:'POST',
             headers: {'Content-Type':'application/json'},
             body:JSON.stringify({...formData,ongoing:true})

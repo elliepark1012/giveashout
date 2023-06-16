@@ -1,4 +1,4 @@
-import {  useParams, useNavigate } from 'react-router'
+import  { Link, useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 function VolunteerDetail({deleteVolunteer}) {
@@ -19,7 +19,9 @@ function VolunteerDetail({deleteVolunteer}) {
         })
     },[])
 
+
     function handleDelete(){
+        console.log(params.id)
         fetch(`/volunteers/${params.id}`,{
             method:'DELETE',
             headers: {'Content-Type': 'application/json'}
@@ -27,7 +29,7 @@ function VolunteerDetail({deleteVolunteer}) {
           .then(res => {
             if(res.ok){
               deleteVolunteer(id)
-              navigate.push('/')
+              navigate('/')
             } else {
               res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
             }
@@ -42,34 +44,36 @@ function VolunteerDetail({deleteVolunteer}) {
         })
         .then(res => {
           if(res.ok){
-            navigate.push('/users/1')
+            navigate('/users/1')
           } else {
             res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
           }
         })
       }
 
-      // if(loading) return <h1>Loading</h1>
       if(errors) return <h1>{errors}</h1>
 
       const {id, title, date, location, about, img_url, contacts} = volunteer
 
       return (
         <div>
-            <h1>{title}</h1>
-                <div>
+                <div className='button-container'>
+                    <button><Link className='buttonlink' to={`/volunteer/${id}/edit`}>Edit Volunteer</Link></button>
+                    <button onClick={handleSignUp} >Sign Up!</button>
+                    <button onClick={handleDelete}>Not Interested</button>
+                </div> 
+                <div className='carddetail'>
                     <div>
+                    <h1 className='cardlink'>{title}</h1>
+                    <img className='cardimage' src={img_url}/>
                         <h3>Date: {date}</h3>
                         <h3>Location: {location}</h3>
-                        <h3>About: {about}</h3>
+                        <h3 className='cardabout'>About: {about}</h3>
                         <h4>Contacts:</h4>
-                        <ul>{contacts.map(contact => <li>{contact.name} : {contact.email}</li>)}</ul>
+                        <ul className='contact'>{contacts.map(contact => <li key={contact}>{contact.name} : {contact.email}</li>)}</ul>
                     </div>
-                    <img src={img_url}/>
                 </div>
-                {/* <button><Link to={`/volunteers/${id}/edit`}>Edit Volunteer</Link></button> */}
-                <button onClick={handleDelete}>Delete Volunteer</button>
-                <button onClick={handleSignUp} >Sign Up!</button>
+              
         </div>
       )
     }

@@ -1,5 +1,5 @@
 class Volunteer < ApplicationRecord
-    has_many :contacts 
-    has_many :signups
-    has_many :users, through: :signups
+    has_many :contacts ,dependent: :destroy
+    has_many :signups ,dependent: :destroy
+    has_many :users, through: :signups, dependent: :destroy
 end

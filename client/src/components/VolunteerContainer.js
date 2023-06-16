@@ -3,8 +3,8 @@ import VolunteerCard from './VolunteerCard'
 function VolunteerContainer({volunteers}) {
     return (
         <div>
-            <title>Give A Shout</title>
-            <div>
+            <title className='title' >Give A Shout</title>
+            <div className='cardcontainer'>
                 {volunteers.map(volunteer => <ul><VolunteerCard key={volunteer.id} volunteer={volunteer}/></ul>)}
             </div>
         </div>
