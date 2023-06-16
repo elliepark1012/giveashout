@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 
 function EditVolunteerForm({updateVolunteer}) {
@@ -12,19 +12,19 @@ function EditVolunteerForm({updateVolunteer}) {
     })
     const [errors, setErrors] = useState()
     const {id} = useParams()
+    const navigate = useNavigate()
+
       useEffect(() => {
       fetch(`/volunteers/${id}`)
       .then(res => res.json())
       .then(setFormData)
     },[])
 
-    const handleChange = (e) => {
-        const { name, value } = e.target
-        setFormData({...formData, [name]: value })
+        const handleChange = (e) => {
+          const { name, value } = e.target
+           setFormData({...formData, [name]: value })
         }
     
-    
-  
         function onSubmit(e){
           e.preventDefault()
           console.log(formData)
@@ -36,7 +36,7 @@ function EditVolunteerForm({updateVolunteer}) {
           .then(res => {
             if(res.ok){
               res.json().then(updateVolunteer)
-            
+              navigate('/')
             } else {
               res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
             }
@@ -45,8 +45,10 @@ function EditVolunteerForm({updateVolunteer}) {
       
     return (
         <div className='formbox'>
-            {errors?errors.map(e => <div>{e}</div>) : null}
+            
             <form  onSubmit={onSubmit}>
+              <h5>EDIT VOLUNTEER</h5>
+              {errors?errors.map(e => <div className='error'>{e}</div>) : null}
                 <label>Title</label>
                 <input type ='text' name='title' value={formData.title} onChange={handleChange} />
 
@@ -62,7 +64,7 @@ function EditVolunteerForm({updateVolunteer}) {
                 <label>About</label>
                 <textarea type='text' rows='4' cols='50' name='about' value={formData.about} onChange={handleChange} />
                 
-                <input type='submit' value='Update Volunteer' />
+                <button type='submit'>Update Volunteer</button>
             </form>
         </div>
     )

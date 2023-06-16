@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 
 function VolunteerForm({addVolunteer}) {
     const [formData, setFormData] = useState({
@@ -28,7 +28,7 @@ function VolunteerForm({addVolunteer}) {
             if(res.ok){
                 res.json().then(data => {
                     addVolunteer(data)
-                    navigate.push('/')
+                    navigate('/')
                 })
             } else {
                 res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
@@ -37,9 +37,12 @@ function VolunteerForm({addVolunteer}) {
     }
 
         return (
-            <div>
-            {errors?errors.map(e => <div>{e}</div>) : null}
-            <form onSubmit={onSubmit}>
+            <div className='formbox'>
+            
+            <form  onSubmit={onSubmit}>
+            
+              <h5>ADD NEW VOLUNTEER</h5>
+              {errors?errors.map(e => <div className='error'>{e}</div>) : null}
                 <label>Title</label>
                 <input type ='text' name='title' value={formData.title} onChange={handleChange} />
 
@@ -55,10 +58,9 @@ function VolunteerForm({addVolunteer}) {
                 <label>About</label>
                 <textarea type='text' rows='4' cols='50' name='about' value={formData.about} onChange={handleChange} />
                 
-                <input type='submit' value='Add Volunteer' />
-      
+                <button type='submit'>Add New Volunteer</button>
             </form>
-            </div>
+        </div>
         )
 }
 
