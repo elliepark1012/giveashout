@@ -38,11 +38,11 @@ Volunteer.create(
     img_url: "https://d6osdab9etm5d.cloudfront.net/client_data/apple.benevity.org/files/imagecache/wpg_1080x250/userfile-64806b703dae21.27390428.png"
 )
 
-User.create(username: Faker::Name.first_name, email: Faker::Internet.email, password:Faker::Internet.password)
-User.create(username: Faker::Name.first_name, email: Faker::Internet.email, password:Faker::Internet.password)
-User.create(username: Faker::Name.first_name, email: Faker::Internet.email, password:Faker::Internet.password)
-User.create(username: Faker::Name.first_name, email: Faker::Internet.email, password:Faker::Internet.password)
-User.create(username: Faker::Name.first_name, email: Faker::Internet.email, password:Faker::Internet.password)
+User.create(username: Faker::Name.first_name, email: Faker::Internet.email, password_disgest:Faker::Internet.password)
+User.create(username: Faker::Name.first_name, email: Faker::Internet.email, password_disgest:Faker::Internet.password)
+User.create(username: Faker::Name.first_name, email: Faker::Internet.email, password_disgest:Faker::Internet.password)
+User.create(username: Faker::Name.first_name, email: Faker::Internet.email, password_disgest:Faker::Internet.password)
+User.create(username: Faker::Name.first_name, email: Faker::Internet.email, password_disgest:Faker::Internet.password)
 
 Contact.create(name: Faker::Name.name, email: Faker::Internet.email, volunteer_id: 1)
 Contact.create(name: Faker::Name.name, email: Faker::Internet.email, volunteer_id: 1)
