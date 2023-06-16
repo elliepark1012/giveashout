@@ -1,5 +1,31 @@
- #app {
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+}
+
+.navbar ul{
+  list-style: none;
   background-color: black;
-  color: white
-  
+  padding: 0;
+  margin: 25px 0 0 0;
+}
+.navbar li{
+  display: inline-block;
+}
+
+.navlink {
+  text-decoration: none;
+  color: White;
+  width: 100px;
+  margin: 200px;
+  padding: 35px 20px;
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+}
+
+.navbar .navlink:hover{
+  background-color: rgb(245, 116, 2);
 }
