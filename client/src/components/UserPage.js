@@ -29,7 +29,7 @@ function UserPage(){
     return (
         <div>
             <h1>{user.username}</h1>
-            <h3>Tickets</h3>
+            <h3>Sign Up List</h3>
             <ul>
                 {user.signups?.map(signup => (
                 <li key={signup.id}>

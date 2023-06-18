@@ -6,7 +6,7 @@ class VolunteersController < ApplicationController
 
     def show
         volunteer = Volunteer.find(params[:id])
-        render json: volunteer, include: :contacts, status: :ok
+        render json: volunteer, status: :ok
     end 
 
     def create

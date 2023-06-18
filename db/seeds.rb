@@ -47,6 +47,8 @@ Volunteer.create(
 )
 end
 
+User.create(username:"ellie", email:"ellie", password:"ellie", password_confirmation:"ellie")
+
 Contact.create(name: Faker::Name.name, email: Faker::Internet.email, volunteer_id: 1)
 Contact.create(name: Faker::Name.name, email: Faker::Internet.email, volunteer_id: 1)
 Contact.create(name: Faker::Name.name, email: Faker::Internet.email, volunteer_id: 2)

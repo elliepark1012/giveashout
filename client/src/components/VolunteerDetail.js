@@ -44,7 +44,7 @@ function VolunteerDetail({deleteVolunteer}) {
         })
         .then(res => {
           if(res.ok){
-            navigate('/users/1')
+            navigate('/users/')
           } else {
             res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
           }

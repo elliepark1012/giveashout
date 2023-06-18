@@ -8,8 +8,7 @@ import Navbar from './components/Navbar'
 import VolunteerDetail from './components/VolunteerDetail'
 import UserPage from './components/UserPage';
 import NewMember from './components/NewMember';
-import Login from './components/UserPage';
-import NotFound from './components/NotFound';
+import Login from './components/Login';
 
 function App() {
   const [volunteers, setVolunteers] = useState([])
@@ -59,18 +58,18 @@ function App() {
   return (
   <div id="app">
     <Navbar updateUser={updateUser}/>
-    {!currentUser? <Login error={'please login'} updateUser={updateUser} /> :
+    {!currentUser? 
+      <>
+      <Login error={'please login'} updateUser={updateUser} /> 
+      <NewMember /> 
+      </>:
       <Routes>
         <Route path='/volunteers/new' element={ <VolunteerForm addVolunteer={addVolunteer} />} /> 
         <Route path='/volunteer/:id/edit' element={ <EditVolunteerForm updateVolunteer={updateVolunteer} />} />
         <Route path='/volunteer/:id' element={    <VolunteerDetail deleteVolunteer={deleteVolunteer} /> } />
         <Route path='/users/new' element={ <NewMember />} />
         <Route path='/users/:id' element={ <UserPage />} />
-        <Route path='/login' element={ <Login updateUser={updateUser} />} />
-        <Route exact path='/' element={  <Home volunteers={volunteers} /> } />
-        <Route element={ <NotFound />} />
-
-
+        <Route exact path='/' element={<Home volunteers={volunteers}/>} />
       </Routes>}
   </div>
   );
