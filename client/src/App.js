@@ -6,15 +6,29 @@ import VolunteerForm from './components/VolunteerForm'
 import EditVolunteerForm from './components/EditVolunteerForm'
 import Navbar from './components/Navbar'
 import VolunteerDetail from './components/VolunteerDetail'
-import NotFound from './components/NotFound'
-import NewMember from './components/NewMember';
 import UserPage from './components/UserPage';
+import NewMember from './components/NewMember';
+import Login from './components/UserPage';
+import NotFound from './components/NotFound';
 
 function App() {
   const [volunteers, setVolunteers] = useState([])
   const [errors, setErrors] = useState(false)
+  const [currentUser, setCurrentUser] = useState(false)
 
   useEffect(() => {
+    fetch('authorized_user')
+    .then(res => {
+      if(res.ok) {
+        res.json().then(user => {
+          updateUser(user)
+          fetchVolunteer()
+        })
+      }
+    })
+  }, [])
+
+  const fetchVolunteer = () => {
     fetch('/volunteers')
     .then(res => {
       if(res.ok){
@@ -23,7 +37,7 @@ function App() {
         res.json().then(data => setErrors(data.error))
       }
     })
-  },[])
+  }
 
   const addVolunteer = (volunteer) => setVolunteers(current => [...current, volunteer])
 
@@ -39,20 +53,25 @@ function App() {
 
   const deleteVolunteer = (id) => setVolunteers(current => current.filter(v => v.id !== id))
 
-  if(errors) return <h1>{errors}</h1>
+  const updateUser = (user) => setCurrentUser(user)
 
+  if(errors) return <h1>{errors}</h1>
   return (
   <div id="app">
-    <Navbar/>
+    <Navbar updateUser={updateUser}/>
+    {!currentUser? <Login error={'please login'} updateUser={updateUser} /> :
       <Routes>
         <Route path='/volunteers/new' element={ <VolunteerForm addVolunteer={addVolunteer} />} /> 
         <Route path='/volunteer/:id/edit' element={ <EditVolunteerForm updateVolunteer={updateVolunteer} />} />
         <Route path='/volunteer/:id' element={    <VolunteerDetail deleteVolunteer={deleteVolunteer} /> } />
-        <Route exact path='/' element={  <Home volunteers={volunteers} /> } />
-        <Route element={ <NotFound />} />
         <Route path='/users/new' element={ <NewMember />} />
         <Route path='/users/:id' element={ <UserPage />} />
-      </Routes> 
+        <Route path='/login' element={ <Login updateUser={updateUser} />} />
+        <Route exact path='/' element={  <Home volunteers={volunteers} /> } />
+        <Route element={ <NotFound />} />
+
+
+      </Routes>}
   </div>
   );
 }

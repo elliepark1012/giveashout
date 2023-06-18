@@ -5,7 +5,7 @@ function VolunteerContainer({volunteers}) {
         <div>
             <title className='title' >Give A Shout</title>
             <div className='cardcontainer'>
-                {volunteers.map(volunteer => <ul><VolunteerCard key={volunteer.id} volunteer={volunteer}/></ul>)}
+                {volunteers.map(volunteer => <ul key={volunteer.id} ><VolunteerCard key={volunteer.id} volunteer={volunteer}/></ul>)}
             </div>
         </div>
     )

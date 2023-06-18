@@ -19,11 +19,13 @@ function UserPage(){
                 res.json().then(data => setErrors(data.errors))
             }
         })
-       
     },[])
+ 
 
     if(loading) return <h1>Loading</h1>
     if(errors) return <h1>{errors}</h1>
+
+
     return (
         <div>
             <h1>{user.username}</h1>
@@ -32,9 +34,9 @@ function UserPage(){
                 {user.signups?.map(signup => (
                 <li key={signup.id}>
                     <h2>{signup.volunteer.title}</h2>
-                    <p>Date: {signup.volunteer.date}</p>
+                    {/* <p>Date: {signup.volunteer.date}</p>
                     <p>Location: {signup.volunteer.location}</p>
-                    <p>Donation: {signup.price}</p>
+                    <p>Donation: {signup.price}</p> */}
                 </li>
                 ))}
             </ul>
