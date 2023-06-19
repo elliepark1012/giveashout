@@ -27,16 +27,16 @@ function UserPage(){
 
 
     return (
-        <div>
+        <div className='userpage'>
             <h1>{user.username}</h1>
             <h3>Sign Up List</h3>
             <ul>
                 {user.signups?.map(signup => (
                 <li key={signup.id}>
                     <h2>{signup.volunteer.title}</h2>
-                    {/* <p>Date: {signup.volunteer.date}</p>
+                     <p>Date: {signup.volunteer.date}</p>
                     <p>Location: {signup.volunteer.location}</p>
-                    <p>Donation: {signup.price}</p> */}
+                    <p>Donation: {signup.price}</p>
                 </li>
                 ))}
             </ul>

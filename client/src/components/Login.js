@@ -42,8 +42,8 @@ function Login({updateUser}) {
         setFormData({ ...formData, [name]: value })
       }
     return (
-        <> 
-        <form onSubmit={onSubmit}>
+        <div>
+        <form className="loginbox" onSubmit={onSubmit}>
         <label>
           Username
           </label>
@@ -54,11 +54,10 @@ function Login({updateUser}) {
          </label>
         <input type='password' name='password' value={password} onChange={handleChange} />
        
-       
-        <input type='submit' value='Log in!' />
+        <button type='submit' value='Log in!'>Welcome BACK</button> 
       </form>
       {errors? <div>{errors}</div>:null}
-        </>
+        </div>
     )
 }
 

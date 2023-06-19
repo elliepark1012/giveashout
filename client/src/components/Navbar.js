@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom'
 import logo from '../logo.jpeg'
-function NavBar({updateUser}) {
+import Home from './Home'
+function NavBar({updateUser, volunteers}) {
 
     const handleLogOut = () => {
         fetch('/logout', {
@@ -16,14 +17,17 @@ function NavBar({updateUser}) {
         <>
         <div className="navbar">
             <ul>
-                <li><Link className="navlink" to='/volunteers/new'>New Volunteer</Link></li>
                 <li><Link className="navlink" to='/'> Home</Link></li>
+                <li><Link className="navlink" to='/volunteers/new'>Add New Volunteer</Link></li>
                 <li><Link className="navlink" to='/users/new'> New Member</Link></li>
                 <li><Link className="navlink" to='/login'> Login</Link></li>
+                <li><Link className="navlink" to='/users/:id'> My WORk</Link></li>
+                <li><button onClick={handleLogOut}>Log Out</button></li>
            </ul>
-           <button onClick={handleLogOut}>Log Out</button>
+
         </div>
         <img src={logo} className='logo'/>
+        <Home volunteers={volunteers}/>
         </>
     )
 }

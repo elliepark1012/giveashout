@@ -1,9 +1,10 @@
 import  { Link, useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
-function VolunteerDetail({deleteVolunteer}) {
+function VolunteerDetail({deleteVolunteer, currentUser }) {
     const [volunteer, setVolunteer] = useState({contacts:[]})
     const [errors, setErrors] = useState()
+    const cid = currentUser.id
 
     const params = useParams()
     const navigate = useNavigate()
@@ -18,7 +19,6 @@ function VolunteerDetail({deleteVolunteer}) {
             }
         })
     },[])
-
 
     function handleDelete(){
         console.log(params.id)
@@ -40,11 +40,11 @@ function VolunteerDetail({deleteVolunteer}) {
         fetch(`/signups`,{
           method:'POST',
           headers: {'Content-Type': 'application/json'},
-          body:JSON.stringify({volunteer_id:id, user_id:1, price:1})
+          body:JSON.stringify({volunteer_id:id, user_id:cid, price:1})
         })
         .then(res => {
           if(res.ok){
-            navigate('/users/')
+            navigate('/users/:id')
           } else {
             res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
           }

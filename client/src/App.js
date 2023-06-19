@@ -57,23 +57,30 @@ function App() {
   if(errors) return <h1>{errors}</h1>
   return (
   <div id="app">
-    <Navbar updateUser={updateUser}/>
+
+    <Navbar updateUser={updateUser} volunteers={volunteers}/>
+   
     {!currentUser? 
-      <>
-      <Login error={'please login'} updateUser={updateUser} /> 
-      <NewMember /> 
-      </>:
-      <Routes>
+    <>
+   <Login error={'please login'} updateUser={updateUser} /> 
+   
+    </>
+     :
+     <>
+     <Routes>
         <Route path='/volunteers/new' element={ <VolunteerForm addVolunteer={addVolunteer} />} /> 
         <Route path='/volunteer/:id/edit' element={ <EditVolunteerForm updateVolunteer={updateVolunteer} />} />
-        <Route path='/volunteer/:id' element={    <VolunteerDetail deleteVolunteer={deleteVolunteer} /> } />
+        <Route path='/volunteer/:id' element={    <VolunteerDetail deleteVolunteer={deleteVolunteer} currentUser={currentUser}/> } />
         <Route path='/users/new' element={ <NewMember />} />
         <Route path='/users/:id' element={ <UserPage />} />
         <Route exact path='/' element={<Home volunteers={volunteers}/>} />
-      </Routes>}
+      </Routes>
+      </>
+      }
+     
   </div>
   );
 }
 
-export default App;
 
+export default App;
