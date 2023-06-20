@@ -1,4 +1,8 @@
 class SignupSerializer < ActiveModel::Serializer
-  attributes :price, :user_id, :volunteer_id 
-  belongs_to :user
+  attributes :price, :user, :volunteer
+  has_one :user
+
+  def production
+    {title:object.production.title}
+  end 
 end
