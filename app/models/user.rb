@@ -1,12 +1,9 @@
 class User < ApplicationRecord
+    has_secure_password
+
     has_many :signups 
     has_many :volunteers, through: :signups
 
-    has_secure_password
-    validates_presence_of :username, :email, :password, :password_confirmation
-    validates :username, :email, :password, :password_confirmation, length: { in: 3...500}
-    validates :username, :email, uniqueness:true
-
-    validates :password, confirmation: true
-    validates :password_confirmation, presence: true
+    validates :username, presence: true, uniqueness: true 
+    validates :email, presence: true, uniqueness: true, format: /\w+@\w+\.{1}[a-zA-Z]{2,}/
 end

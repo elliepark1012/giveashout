@@ -4,7 +4,8 @@ function VolunteerCard({volunteer}) {
     const {title, date, location, about, img_url, id} = volunteer
 
     return (
-        <Link className="cardlink" to={`/volunteer/${id}`}><div className='card'>
+        <Link className="cardlink" to={`/volunteer/${id}`}>
+        <div className='card'>
         <img className='cardimage' src={img_url}/>
              <h2>{title}</h2>
             <p>Date: {date}</p>

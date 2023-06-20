@@ -2,15 +2,12 @@ import React, {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 
 function Login({updateUser}) {
-    const [formData, setFormData] = useState({
-        username:'',
-        email:'',
-        password:''
-    })
-    const [errors, setErrors] = useState([])
-    const navigate = useNavigate()
+    const [username, setUsername] = useState ('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState ([])
+    const [login, setLogin] = useState('')
 
-    const {username, password} = formData
+    const navigate = useNavigate()
 
     function onSubmit(e){
         e.preventDefault()
@@ -26,37 +23,31 @@ function Login({updateUser}) {
         })
         .then(res => {
             if(res.ok){
-                res.json().then(user => {
-                    updateUser(user)
-                    navigate(`/users/${user.id}`)
-                })
-            }else {
-                res.json().then(json => setErrors(json.errors))
+                res.json().then(
+                    user=> updateUser(user))
+                navigate('/volunteers')
+            } else {
+                res.json().then((errorData) => setErrors(Object.entries(errorData.errors).map(e=> `${e[0]} ${e[1]}`)));
             }
-        })
-       
+        })   
     }
-
-    const handleChange = (e) => {
-        const { name, value } = e.target
-        setFormData({ ...formData, [name]: value })
-      }
+    console.log(errors)
     return (
         <div>
         <form className="loginbox" onSubmit={onSubmit}>
         <label>
           Username
           </label>
-        <input type='text' name='username' value={username} onChange={handleChange} />
+        <input type='text' name='username' value={username} onChange={(e) => setUsername(e.target.value)} />
       
         <label>
          Password
          </label>
-        <input type='password' name='password' value={password} onChange={handleChange} />
+        <input type='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)} />
        
-        <button type='submit' value='Log in!'>Welcome BACK</button> 
+        <button type='submit' onClick={() => setLogin(login)}>Welcome BACK</button> 
       </form>
-      {errors? <div>{errors}</div>:null}
+      <div className='errorbox'>{errors?errors.map(e=> <div className='error'>{e}</div>):null}</div>
         </div>
     )
 }

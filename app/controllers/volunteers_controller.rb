@@ -1,5 +1,6 @@
 class VolunteersController < ApplicationController
-   
+    skip_before_action :authorized, only: [:index, :show] 
+    
     def index 
         render json: Volunteer.all, status: :ok
     end 

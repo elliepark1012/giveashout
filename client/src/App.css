@@ -216,4 +216,16 @@ textarea {
   text-align: center;
 }
 
+.loginlink {
+  text-decoration: none;
+  color:white;
+}
 
+.errorbox {
+  display: flex;
+}
+
+.error {
+  color: white;
+  flex: 1;
+}
