@@ -59,7 +59,6 @@ function App() {
   <div id="app">
 
     <Navbar updateUser={updateUser} volunteers={volunteers}/>
-   
     {!currentUser? 
     <>
    <Login error={'please login'} updateUser={updateUser} /> 
@@ -77,7 +76,6 @@ function App() {
       </Routes>
       </>
       }
-     
   </div>
   );
 }

@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 import logo from '../logo.jpeg'
 import Home from './Home'
-function NavBar({updateUser, volunteers}) {
+function NavBar({updateUser}) {
 
     const handleLogOut = () => {
         fetch('/logout', {
@@ -27,7 +27,7 @@ function NavBar({updateUser, volunteers}) {
 
         </div>
         <img src={logo} className='logo'/>
-        <Home volunteers={volunteers}/>
+       
         </>
     )
 }
