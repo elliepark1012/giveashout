@@ -1,4 +1,3 @@
-
 function UserPage( {currentUser} ) {
 
     return (

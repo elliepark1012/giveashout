@@ -3,22 +3,37 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+### Built With
 
-* Ruby version
+* React
 
-* System dependencies
+* Ruby on Rails
 
-* Configuration
+* CSS
 
-* Database creation
 
-* Database initialization
+### Getting Started 
 
-* How to run the test suite
+#### Prerequisites
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+* Install NPM packages
 
-* ...
+$ npm install
+
+* Next, run the Rails server in one terminal:
+
+$ rails s
+
+* To access the admin page: 
+
+visit: http://localhost:3000/admin
+
+*  Open another terminal and run the React server:
+  
+$ npm start --prefix client
+
+
+![this image will not be displayed](..\src\model.jpeg)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
