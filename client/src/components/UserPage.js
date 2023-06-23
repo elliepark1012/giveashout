@@ -1,5 +1,5 @@
-function UserPage({ currentUser }) {
 
+function UserPage( {currentUser} ) {
 
     return (
         <div className="userpage">
@@ -7,6 +7,7 @@ function UserPage({ currentUser }) {
         <h1> Volunteer List</h1>
         <ul>
             {currentUser.signups.map(signup => (
+                
             <li>
                 <h2>{signup.volunteer.title}</h2>
                 <h2>{signup.volunteer.date}</h2>

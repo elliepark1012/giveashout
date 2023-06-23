@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import logo from '../logo.jpeg'
 
-function NavBar({currentUser, updateUser}) {
+function NavBar({updateUser, currentUser}) {
 
   const navigate = useNavigate()
 

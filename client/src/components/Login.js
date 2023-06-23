@@ -31,7 +31,7 @@ function Login({updateUser}) {
             }
         })   
     }
-    console.log(errors)
+ 
     return (
         <div>
         <form className="loginbox" onSubmit={onSubmit}>

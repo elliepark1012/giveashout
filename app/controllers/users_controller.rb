@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
     skip_before_action :authorized, only: [:create]
-  
+   
     def show
+      print "THIS IS THE CURRENT USER: #{current_user}"
       render json: current_user, status: :ok
     end
   

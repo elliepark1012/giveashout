@@ -38,16 +38,10 @@ Volunteer.create(
     img_url: "https://d6osdab9etm5d.cloudfront.net/client_data/apple.benevity.org/files/imagecache/wpg_1080x250/userfile-64806b703dae21.27390428.png"
 )
 
-(1..20).each do |id|
-    User.create!(id: id, 
-    username: Faker::Name.name,
-    email: Faker::Internet.email,
-    password: "password", 
-    password_confirmation: "password",
-)
-end
-
-User.create(username:"ellie", email:"ellie", password:"ellie", password_confirmation:"ellie")
+User.create(username:"ellie", email:"ellie@ellie.com", password:"ellie", password_confirmation:"ellie", admin: true)
+User.create(username:"josh", email:"josh@josh.com", password:"josh", password_confirmation:"josh", admin: false)
+User.create(username:"crystal", email:"crystal@crystal.com", password:"crystal", password_confirmation:"crystal", admin: false)
+User.create(username:"happy", email:"happy@happy.com", password:"happy", password_confirmation:"happy", admin: false)
 
 Contact.create(name: Faker::Name.name, email: Faker::Internet.email, volunteer_id: 1)
 Contact.create(name: Faker::Name.name, email: Faker::Internet.email, volunteer_id: 1)
@@ -66,3 +60,5 @@ Signup.create(user_id:2, volunteer_id: 2, price: 1)
 Signup.create(user_id:2, volunteer_id: 5, price: 1)
 Signup.create(user_id:3, volunteer_id: 1, price: 1)
 Signup.create(user_id:4, volunteer_id: 3, price: 1)
+
+

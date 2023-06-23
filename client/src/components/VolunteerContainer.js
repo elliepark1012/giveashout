@@ -1,6 +1,6 @@
 import VolunteerCard from './VolunteerCard'
 
-function VolunteerContainer({volunteers, currentUser, deleteVolunteer}) {
+function VolunteerContainer({volunteers, deleteVolunteer, currentUser}) {
  
     return (
         <div>

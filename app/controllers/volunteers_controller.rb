@@ -1,5 +1,6 @@
 class VolunteersController < ApplicationController
     skip_before_action :authorized, only: [:index, :show] 
+    before_action :authorize_admin, only: [:create, :update, :destroy]
     
     def index 
         render json: Volunteer.all, status: :ok
@@ -11,7 +12,7 @@ class VolunteersController < ApplicationController
     end 
 
     def create
-        volunteer = Volunteer.create!(volunteer_params)
+        volunteer = Volunteer.create(volunteer_params)
         render json: volunteer, status: :created
     end 
 
