@@ -12,7 +12,7 @@ import Login from './components/Login';
 
 function App() {
   // const [volunteers, setVolunteers] = useState([])
-  // const [errors, setErrors] = useState(false)
+  const [errors, setErrors] = useState(false)
   const [currentUser, setCurrentUser] = useState(false)
 
   const updateUser = (user) => setCurrentUser(user)
@@ -34,7 +34,7 @@ function App() {
     <Navbar currentUser={currentUser} updateUser={updateUser} />
     <Routes>
     <Route exact path='/volunteers' element= {<Volunteers currentUser={currentUser}/>} />
-    <Route exact path='/users/:id' element= {<UserPage currentUser={currentUser} />} />
+    <Route exact path='/users/:id' element= {<UserPage currentUser={currentUser}/>} />
     <Route exact path='/volunteer/:id' element={<VolunteerDetail currentUser={currentUser}/>} />
     <Route exact path='/login' element={<Login updateUser={updateUser} />} />
     <Route exact path='/' element={<Auth setCurrentUser={setCurrentUser} />} />

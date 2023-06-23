@@ -64,6 +64,7 @@ function VolunteerDetail({deleteVolunteer, currentUser }) {
                 </div> 
                 <div className='carddetail'>
                     <div>
+                    <h3>There's a Signup fee $1 for Donation.</h3>
                     <h1 className='cardlink'>{title}</h1>
                     <img className='cardimage' src={img_url}/>
                         <h3>Date: {date}</h3>
@@ -73,7 +74,6 @@ function VolunteerDetail({deleteVolunteer, currentUser }) {
                         <ul className='contact'>{contacts.map(contact => <li key={contact}>{contact.name} : {contact.email}</li>)}</ul>
                     </div>
                 </div>
-              
         </div>
       )
     }

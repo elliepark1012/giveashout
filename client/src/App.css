@@ -229,3 +229,7 @@ textarea {
   color: white;
   flex: 1;
 }
+
+.userpage h1 {
+  text-transform: uppercase;
+}
