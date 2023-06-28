@@ -1,14 +1,13 @@
 import  { Link, useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import UserContext from '../UserContext';
+import SignupforVolunteerForm from './SignupforVolunteerForm'
 
-function VolunteerDetail({ deleteVolunteer}) {
-     const currentUser = useContext(UserContext);
+function VolunteerDetail({ deleteVolunteer, setSignups }) {
+    const currentUser = useContext(UserContext);
     const [volunteer, setVolunteer] = useState({contacts:[]})
     const [errors, setErrors] = useState()
     const {id, title, date, location, about, img_url, contacts} = volunteer
-
-    const cid = currentUser.id
 
     const params = useParams()
     const navigate = useNavigate()
@@ -19,6 +18,7 @@ function VolunteerDetail({ deleteVolunteer}) {
         .then(res => {
             if(res.ok){
                 res.json().then(data => setVolunteer(data))
+                console.log(currentUser)
             } else {
                 res.json().then(data => setErrors(data.error))
             }
@@ -41,31 +41,34 @@ function VolunteerDetail({ deleteVolunteer}) {
           })
     }
 
-    const handleSignUp = () => {
-        fetch(`/signups`,{
-          method:'POST',
-          headers: {'Content-Type': 'application/json'},
-          body:JSON.stringify({volunteer_id:id, user_id:cid, price:1})
-        })
-        .then(res => {
-          if(res.ok){
-            navigate('/volunteers')
-          } else {
-            res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
-          }
-        })
-      }
+    const addSignup = (signup) => {
+      setSignups(current => [...current, signup])
+    }
+
+     
+  // const deleteSignup = (id) => setSignups(current => current.filter(s => s.id !== id))
+    
+
+  // const updateSignup = (updatedSignup) => setSignups(current => {
+  //   return current.map(signup => {
+  //      if (signup.id === updatedSignup.id){
+  //        return updatedSignup 
+  //      } else {
+  //        return signup
+  //      }
+  //    })
+  //  })
+ 
 
       if(errors) return <h1>{errors}</h1>
 
       return (
         <div>
                 <div className='button-container'>
-                    <button onClick={handleSignUp} >Sign Up!</button>
+                    <SignupforVolunteerForm addSignup={addSignup} volunteer_id={volunteer.id} user_id={currentUser.id} title={volunteer.title} />
                 </div> 
                 <div className='carddetail'>
                     <div>
-                    <h3>There's a Signup fee $1 for Donation.</h3>
                     <h1 className='cardlink'>{title}</h1>
                     <img className='cardimage' src={img_url}/>
                         <h3>Date: {date}</h3>

@@ -54,11 +54,11 @@ Contact.create(name: Faker::Name.name, email: Faker::Internet.email, volunteer_i
 Contact.create(name: Faker::Name.name, email: Faker::Internet.email, volunteer_id: 5)
 Contact.create(name: Faker::Name.name, email: Faker::Internet.email, volunteer_id: 5)
 
-Signup.create(user_id:1, volunteer_id: 4, price: 1)
-Signup.create(user_id:1, volunteer_id: 3, price: 1)
-Signup.create(user_id:2, volunteer_id: 2, price: 1)
-Signup.create(user_id:2, volunteer_id: 5, price: 1)
-Signup.create(user_id:3, volunteer_id: 1, price: 1)
-Signup.create(user_id:4, volunteer_id: 3, price: 1)
+Signup.create(user_id:1, volunteer_id: 4, price: 1, participants:3, experience:3, names: "Ellie Park, Joshua Taubes")
+Signup.create(user_id:1, volunteer_id: 3, price: 1, participants:3, experience:3, names: "Ellie Park, Joshua Taubes")
+Signup.create(user_id:2, volunteer_id: 2, price: 1, participants:3, experience:3, names: "Ellie Park, Joshua Taubes")
+Signup.create(user_id:2, volunteer_id: 5, price: 1, participants:3, experience:3, names: "Ellie Park, Joshua Taubes")
+Signup.create(user_id:3, volunteer_id: 1, price: 1, participants:3, experience:3, names: "Ellie Park, Joshua Taubes")
+Signup.create(user_id:4, volunteer_id: 3, price: 1, participants:3, experience:3, names: "Ellie Park, Joshua Taubes")
 
 

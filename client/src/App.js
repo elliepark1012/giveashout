@@ -11,12 +11,16 @@ import NotFound from './components/NotFound';
 import EditVolunteerForm from './components/EditVolunteerForm';
 import VolunteerForm from './components/VolunteerForm'
 import UserContext from './UserContext'
+import SignupforVolunteerForm from './components/SignupforVolunteerForm';
+import EditSignupForm from './components/EditSignupForm'
+import Signups from './components/Signups'
+import SignupDetail from './components/SignupDetail';
 
 function App() {
   const [volunteers, setVolunteers] = useState([])
   const [errors, setErrors] = useState(false)
   const [currentUser, setCurrentUser] = useState(null)
-
+  const [signups, setSignups] = useState([])
 
     const updateUser = (user) => setCurrentUser(user)
       useEffect(() => {
@@ -30,12 +34,11 @@ function App() {
            }});
            }, [])
 
-           const addVolunteer = (volunteer) => {
-            console.log(currentUser)
+    const addVolunteer = (volunteer) => {
             setVolunteers(current => [...current, volunteer])
            }
 
-           const updateVolunteer = (updatedVolunteer) => setVolunteers(current => {
+    const updateVolunteer = (updatedVolunteer) => setVolunteers(current => {
             console.log(currentUser) 
             return current.map(volunteer => {
                if (volunteer.id === updatedVolunteer.id){
@@ -56,12 +59,16 @@ function App() {
       <Navbar  updateUser={updateUser} />
       <Routes>
         <Route exact path='/volunteers' element= {<Volunteers  volunteers={volunteers} setVolunteers={setVolunteers}/>} />
+        <Route exact path='/signups' element= {<Signups signups={signups} setSignups={setSignups} />} />
         <Route exact path='/users/:id' element= {<UserPage />} />
-        <Route exact path='/volunteer/:id' element={<VolunteerDetail  />} />
+        <Route exact path='/signup/:id' element={<SignupDetail  />} />
+        <Route exact path='/volunteer/:id' element={<VolunteerDetail setSignups={setSignups} />} />
         <Route exact path='/login' element={<Login updateUser={updateUser} />} />
         <Route exact path='/' element={<Auth setCurrentUser={setCurrentUser} />} />
         <Route path='/volunteers/new' element={ <VolunteerForm addVolunteer={addVolunteer}/>} /> 
         <Route path='/volunteer/:id/edit' element={ <EditVolunteerForm updateVolunteer={updateVolunteer} />} /> 
+        <Route path='/sigups/new' element={ <SignupforVolunteerForm />} /> 
+        <Route path='/sigup/:id/edit' element={ <EditSignupForm />} /> 
         <Route element={NotFound} />
       </Routes>
     </div>

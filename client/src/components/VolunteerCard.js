@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom'
 
+
 function VolunteerCard({volunteer}) {
     const {title, date, location, about, img_url, id} = volunteer
 

@@ -1,38 +1,40 @@
-import VolunteerContainer from './VolunteerContainer'
+import SignupContainer from './SignupContainer'
 import { useEffect } from 'react'
 import React, { useContext } from 'react';
 import UserContext from '../UserContext';
 
-function Volunteers({ volunteers, setVolunteers }){
+function Signups({ signups, setSignups }){
 
   const currentUser = useContext(UserContext);
 
   useEffect(() => {
-    fetch('/volunteers')
+    fetch('/signups')
       .then(res => {
         if (res.ok) {
+            console.log("yes")
           return res.json();
         } else {
           throw new Error('Network response was not ok');
         }
       })
-      .then(volunteers => {
-        setVolunteers(volunteers);
+      .then(signups => {
+        setSignups(signups);
+        console.log(signups)
       })
       .catch(error => {
         // Handle the error appropriately (e.g., display an error message)
-        console.error('Error fetching volunteers:', error);
+        console.log('Error fetching signups:', error);
       });
   }, []);
 
  
-  const deleteVolunteer = (id) => setVolunteers(current => current.filter(v => v.id !== id))
+  const deleteSignup = (id) => setSignups(current => current.filter(s => s.id !== id))
 
     return(
         <div>
-            <VolunteerContainer volunteers={volunteers}  deleteVolunteer={deleteVolunteer} />
+            <SignupContainer signups={signups} deleteSignup={deleteSignup} />
         </div>
     )
 }
 
-export default Volunteers
+export default Signups

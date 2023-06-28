@@ -1,8 +1,10 @@
 class SignupSerializer < ActiveModel::Serializer
-  attributes :price, :user, :volunteer
+  attributes :price, :user, :volunteer, :participants, :experience, :names, :title, :id
   has_one :user
 
-  def volunteer
-    {title:object.volunteer.title}
+  def title 
+    title = object.volunteer.title
+    print "PRINTING TITLE #{title}"
   end 
+
 end

@@ -1,12 +1,12 @@
 import VolunteerCard from './VolunteerCard'
 
-function VolunteerContainer({volunteers, deleteVolunteer, currentUser}) {
+function VolunteerContainer({volunteers, deleteVolunteer }) {
  
     return (
         <div>
             <title className='title' >Give A Shout</title>
             <div className='cardcontainer'>
-                {volunteers.map(volunteer => <ul key={volunteer.id} ><VolunteerCard key={volunteer.id} volunteer={volunteer} currentUser={currentUser} deleteVolunteer={deleteVolunteer}/></ul>)}
+                {volunteers.map(volunteer => <ul key={volunteer.id} ><VolunteerCard key={volunteer.id} volunteer={volunteer} deleteVolunteer={deleteVolunteer}/></ul>)}
             </div>
         </div>
     )

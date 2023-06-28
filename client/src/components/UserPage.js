@@ -2,26 +2,29 @@ import React, { useContext } from 'react';
 import UserContext from '../UserContext';
 
 function UserPage( ) {
-
     const currentUser = useContext(UserContext);
-
+    
     return (
         <div className="userpage">
-        <h1>{currentUser.username}</h1>
-        <h1> Volunteer List</h1>
+        <h1>Hello, {currentUser.username} !</h1>
+        <h2> {currentUser.email}</h2>
+        <h1> Your Volunteer List</h1>
         <ul>
             {currentUser.signups.map(signup => (
-                
-            <li>
+
+            <div>
                 <h2>{signup.volunteer.title}</h2>
-                <h2>{signup.volunteer.date}</h2>
-                <h2>{signup.volunteer.location}</h2>
-                <h2>Donation: {signup.price}</h2>
-                <h3>Donation cannot be refunded.</h3>
-            </li>
+                <h3>{signup.volunteer.date}</h3>
+                <h3>{signup.volunteer.location}</h3>
+                <h3>Donation: {signup.price} (Donation cannot be refunded.)</h3>
+                <h3>How many people coming with you? (including yourself): {signup.participants} people </h3>
+                <h3>Hoe many volunteer work did you do before? : {signup.experience} times </h3>
+                <h3>Full names of participants: {signup.names} </h3>
+            </div>
             ))}
         </ul>
-        Thank you
+
+        <h1>Thank you</h1>
         <br></br>
         <br></br>
         <br></br>

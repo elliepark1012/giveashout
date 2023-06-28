@@ -30,6 +30,7 @@ function NavBar({updateUser}) {
         ) : (
           <>
             <li><Link className="navlink" to='/users/:id'> My Work</Link></li>
+            <li><Link className="navlink" to='/signups'>My signups</Link></li>
             <button className="signout" onClick={handleLogoutClick}>Sign out</button>
           </>
         )}

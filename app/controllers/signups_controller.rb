@@ -1,17 +1,21 @@
 class SignupsController < ApplicationController
+
+
     def index
-        signup = Signup.all
-        render json: signup
+        signups = current_user.signups
+        render json: signups
     end
 
     def show
-        signup = Signup.find_by(id: params[:id])
+        signup = current_user.signups.find_by(id: params[:id])
+        print "hello"
         render json: signup
     end
 
 
     def create
         signup = Signup.create(signup_params)
+        print "SIGNUP TITLE GOES HERE OMG #{signup.title}"
         render json: signup, status: :created
     end
 
@@ -28,7 +32,8 @@ class SignupsController < ApplicationController
 
     private
 
+
     def signup_params
-        params.permit(:volunteer_id, :user_id, :price)
-    end
+        params.permit(:volunteer_id, :user_id, :price, :participants, :experience, :names, :title)
+    end 
 end
