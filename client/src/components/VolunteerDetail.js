@@ -1,7 +1,9 @@
 import  { Link, useParams, useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
+import UserContext from '../UserContext';
 
-function VolunteerDetail({ deleteVolunteer, currentUser }) {
+function VolunteerDetail({ deleteVolunteer}) {
+     const currentUser = useContext(UserContext);
     const [volunteer, setVolunteer] = useState({contacts:[]})
     const [errors, setErrors] = useState()
     const {id, title, date, location, about, img_url, contacts} = volunteer

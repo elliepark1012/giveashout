@@ -1,8 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom'
 import logo from '../logo.jpeg'
+import React, { useContext } from 'react';
+import UserContext from '../UserContext';
 
-function NavBar({updateUser, currentUser}) {
+function NavBar({updateUser}) {
 
+  const currentUser = useContext(UserContext);
   const navigate = useNavigate()
 
   function handleLogoutClick() {

@@ -10,7 +10,7 @@ import Login from './components/Login';
 import NotFound from './components/NotFound';
 import EditVolunteerForm from './components/EditVolunteerForm';
 import VolunteerForm from './components/VolunteerForm'
-
+import UserContext from './UserContext'
 
 function App() {
   const [volunteers, setVolunteers] = useState([])
@@ -50,13 +50,14 @@ function App() {
     if(errors) return <h1>{errors}</h1>
 
   return (
+    <UserContext.Provider value={currentUser}>  
   <div id="app">
     <div>
-      <Navbar currentUser={currentUser} updateUser={updateUser} />
+      <Navbar  updateUser={updateUser} />
       <Routes>
-        <Route exact path='/volunteers' element= {<Volunteers currentUser={currentUser} volunteers={volunteers} setVolunteers={setVolunteers}/>} />
-        <Route exact path='/users/:id' element= {<UserPage currentUser={currentUser}/>} />
-        <Route exact path='/volunteer/:id' element={<VolunteerDetail currentUser={currentUser} />} />
+        <Route exact path='/volunteers' element= {<Volunteers  volunteers={volunteers} setVolunteers={setVolunteers}/>} />
+        <Route exact path='/users/:id' element= {<UserPage />} />
+        <Route exact path='/volunteer/:id' element={<VolunteerDetail  />} />
         <Route exact path='/login' element={<Login updateUser={updateUser} />} />
         <Route exact path='/' element={<Auth setCurrentUser={setCurrentUser} />} />
         <Route path='/volunteers/new' element={ <VolunteerForm addVolunteer={addVolunteer}/>} /> 
@@ -65,6 +66,7 @@ function App() {
       </Routes>
     </div>
   </div>
+    </UserContext.Provider>
   );
 }
 

@@ -1,7 +1,11 @@
 import VolunteerContainer from './VolunteerContainer'
 import { useEffect } from 'react'
+import React, { useContext } from 'react';
+import UserContext from '../UserContext';
 
-function Volunteers({ currentUser, volunteers, setVolunteers}){
+function Volunteers({ volunteers, setVolunteers }){
+
+  const currentUser = useContext(UserContext);
 
   useEffect(() => {
     fetch('/volunteers')

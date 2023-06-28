@@ -1,4 +1,9 @@
-function UserPage( {currentUser} ) {
+import React, { useContext } from 'react';
+import UserContext from '../UserContext';
+
+function UserPage( ) {
+
+    const currentUser = useContext(UserContext);
 
     return (
         <div className="userpage">
