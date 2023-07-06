@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :opportunities
   resources :signups
   resources :users
-  resources :volunteers
 
 post '/login', to: 'sessions#create'
 get '/me', to: 'users#show'
