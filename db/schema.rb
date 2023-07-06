@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_28_142848) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_06_200329) do
   create_table "contacts", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -20,18 +20,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_28_142848) do
     t.index ["volunteer_id"], name: "index_contacts_on_volunteer_id"
   end
 
-  create_table "signups", force: :cascade do |t|
-    t.string "price"
-    t.string "integer"
-    t.integer "user_id", null: false
-    t.integer "volunteer_id", null: false
+  create_table "opportunities", force: :cascade do |t|
+    t.string "title"
+    t.string "date"
+    t.string "location"
+    t.string "about"
+    t.string "img_url"
+    t.string "contact_name"
+    t.string "contact_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "participants"
-    t.integer "experience"
-    t.string "names"
+  end
+
+  create_table "signups", force: :cascade do |t|
+    t.string "donation"
+    t.string "participants"
+    t.string "extras"
+    t.integer "user_id", null: false
+    t.integer "opportunity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["opportunity_id"], name: "index_signups_on_opportunity_id"
     t.index ["user_id"], name: "index_signups_on_user_id"
-    t.index ["volunteer_id"], name: "index_signups_on_volunteer_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,6 +64,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_28_142848) do
   end
 
   add_foreign_key "contacts", "volunteers"
+  add_foreign_key "signups", "opportunities"
   add_foreign_key "signups", "users"
-  add_foreign_key "signups", "volunteers"
 end

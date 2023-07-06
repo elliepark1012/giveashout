@@ -55,7 +55,7 @@ function SignupDetail({ deleteSignup }) {
 
                 <div className='button-container'>
 
-                    <button><Link className='buttonlink' to={`/signup/${id}/edit`}>Edit Details</Link></button>
+                    <button><Link className='buttonlink' to={`/signups/${id}/edit`}>Edit Details</Link></button>
                     <button onClick={handleDelete}><Link to={`/signups`}>Next Time</Link></button>
                 </div> 
                 </div>

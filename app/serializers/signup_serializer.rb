@@ -1,10 +1,5 @@
 class SignupSerializer < ActiveModel::Serializer
-  attributes :price, :user, :volunteer, :participants, :experience, :names, :title, :id
+  attributes :id, :donation, :participants, :extras
   has_one :user
-
-  def title 
-    title = object.volunteer.title
-    print "PRINTING TITLE #{title}"
-  end 
-
+  has_one :opportunity
 end

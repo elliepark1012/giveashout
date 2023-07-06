@@ -1,13 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  price: MyString
-  integer: MyString
+  donation: MyString
+  participants: MyString
+  extras: MyString
   user: one
-  volunteer: one
+  opportunity: one
 
 two:
-  price: MyString
-  integer: MyString
+  donation: MyString
+  participants: MyString
+  extras: MyString
   user: two
-  volunteer: two
+  opportunity: two

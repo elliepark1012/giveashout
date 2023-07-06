@@ -37,7 +37,7 @@ function EditSignupForm({ updateSignup, user_id, volunteer_id }) {
       .then(res => {
         if (res.ok) {
           res.json().then(updateSignup)
-          navigate('/user/:id')
+          navigate('/users/:id')
         } else {
           res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
           alert('Please Contact Admin')

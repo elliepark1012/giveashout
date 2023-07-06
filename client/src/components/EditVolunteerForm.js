@@ -36,7 +36,7 @@ function EditVolunteerForm({ updateVolunteer }) {
       .then(res => {
         if (res.ok) {
           res.json().then(updateVolunteer)
-          navigate('/volu')
+          navigate('/volunteers')
         } else {
           res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
           alert('Please Contact Admin')

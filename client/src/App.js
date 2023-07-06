@@ -61,14 +61,14 @@ function App() {
         <Route exact path='/volunteers' element= {<Volunteers  volunteers={volunteers} setVolunteers={setVolunteers}/>} />
         <Route exact path='/signups' element= {<Signups signups={signups} setSignups={setSignups} />} />
         <Route exact path='/users/:id' element= {<UserPage />} />
-        <Route exact path='/signup/:id' element={<SignupDetail  />} />
-        <Route exact path='/volunteer/:id' element={<VolunteerDetail setSignups={setSignups} />} />
+        <Route exact path='/signups/:id' element={<SignupDetail  />} />
+        <Route exact path='/volunteers/:id' element={<VolunteerDetail setSignups={setSignups} />} />
         <Route exact path='/login' element={<Login updateUser={updateUser} />} />
         <Route exact path='/' element={<Auth setCurrentUser={setCurrentUser} />} />
         <Route path='/volunteers/new' element={ <VolunteerForm addVolunteer={addVolunteer}/>} /> 
-        <Route path='/volunteer/:id/edit' element={ <EditVolunteerForm updateVolunteer={updateVolunteer} />} /> 
-        <Route path='/sigups/new' element={ <SignupforVolunteerForm />} /> 
-        <Route path='/sigup/:id/edit' element={ <EditSignupForm />} /> 
+        <Route path='/volunteers/:id/edit' element={ <EditVolunteerForm updateVolunteer={updateVolunteer} />} /> 
+        <Route path='/signups/new' element={ <SignupforVolunteerForm />} /> 
+        <Route path='/signups/:id/edit' element={ <EditSignupForm />} /> 
         <Route element={NotFound} />
       </Routes>
     </div>
