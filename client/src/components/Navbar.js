@@ -3,7 +3,7 @@ import logo from '../logo.jpeg'
 import React, { useContext } from 'react';
 import UserContext from '../UserContext';
 
-function NavBar({updateUser}) {
+function NavBar( { updateUser } ) {
 
   const currentUser = useContext(UserContext);
   const navigate = useNavigate()
@@ -20,27 +20,22 @@ function NavBar({updateUser}) {
 
     return (
         <>
-        <div className="navbar">
+          <div className="navbar">
             <ul>
                 <li><Link className="navlink" to='/'> Home</Link></li>
-                <li><Link className="navlink" to='/volunteers'>Volunteers</Link></li>   
-                {!currentUser? (
-            <>
-            </>
-        ) : (
-          <>
-            <li><Link className="navlink" to='/users/:id'> My Work</Link></li>
-            <li><Link className="navlink" to='/signups'>My signups</Link></li>
-            <button className="signout" onClick={handleLogoutClick}>Sign out</button>
-          </>
-        )}
-           </ul>
-        </div>
-        <img src={logo} className='logo'/>
-        
-       
-        </>
-        
+                <li><Link className="navlink" to='/opportunities'>Opportunities</Link></li>   
+                {!currentUser? (<></>
+                ) : (
+                <>
+                <li><Link className="navlink" to='/users/:id'> My Work</Link></li>
+                <li><Link className="navlink" to='/signups'>My signups</Link></li>
+                <button className="signout" onClick={handleLogoutClick}>Sign out</button>
+                </>
+                )}
+            </ul>
+          </div>
+          <img src={logo} className='logo'/>
+        </>        
     )
 }
 

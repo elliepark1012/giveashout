@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-// Also the frontend is sending the user_id to the backend but the backend is the keeper of the logged in user.  What you are doing allows potential for hacking
+function SignupForm({ addSignup, volunteer_id, user_id, title }) {
 
-function SignupforVolunteerForm({ addSignup, volunteer_id, user_id, title }) {
+    const navigate = useNavigate() 
+
     const [formData, setFormData] = useState({
-       price:1,
-       experience:'',
+       donation:1,
        participants:'',
-       names:'',
+       extras:'',
        user_id:user_id,
        volunteer_id:volunteer_id,
        title: title
@@ -16,8 +16,6 @@ function SignupforVolunteerForm({ addSignup, volunteer_id, user_id, title }) {
 
     console.log('OMFG', title)
 
-    const [errors, setErrors] = useState()
-    const navigate = useNavigate()
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -34,7 +32,7 @@ function SignupforVolunteerForm({ addSignup, volunteer_id, user_id, title }) {
             .then(res => {
                 if (res.ok) {
                     res.json().then(addSignup)
-                    navigate('/volunteers')
+                    navigate('/opportunities')
                     
                 }
                 else {
@@ -50,20 +48,18 @@ function SignupforVolunteerForm({ addSignup, volunteer_id, user_id, title }) {
 
                 <h5>SIGN UP FOR THE VOLUNTEER</h5>
                 <h4>There's a $1 Donation Fee as a deposit for signing up! Thank you for your support.</h4>
-                {errors ? errors.map(e => <div className='error'>{e}</div>) : null}
+
                 <label>Participants</label>
                 <input type='number' name='participants' value={formData.participants} onChange={handleChange} />
 
-                <label>Experiences</label>
-                <input type='number' name='experience' value={formData.experience} onChange={handleChange} />
                 <br></br>
-                <label>Full Names of Participants</label>
-                <input className='nameinput' type='text' name='names' value={formData.names} onChange={handleChange} />
+                <label>Full Names of Other Participants</label>
+                <input className='nameinput' type='text' name='extras' value={formData.extras} onChange={handleChange} />
 
-                <button type='submit'>Sign Up for the volunteer</button>
+                <button type='submit'>Sign Up for the volunteer Opportunity</button>
             </form>
         </div>
     )
 }
 
-export default SignupforVolunteerForm
+export default SignupForm
