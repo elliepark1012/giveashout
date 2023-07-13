@@ -2,20 +2,22 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 
-function EditVolunteerForm({ updateVolunteer }) {
+function EditOpportunityForm({ updateOpportunity }) {
   const [formData, setFormData] = useState({
     title: '',
     date: '',
     location: '',
     about: '',
-    img_url: ''
+    img_url: '',
+    contact_name: '',
+    contact_email: ''
   })
   const [errors, setErrors] = useState()
   const { id } = useParams()
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch(`/volunteers/${id}`)
+    fetch(`/opportunities/${id}`)
       .then(res => res.json())
       .then(setFormData)
   }, [])
@@ -28,15 +30,15 @@ function EditVolunteerForm({ updateVolunteer }) {
   function onSubmit(e) {
     e.preventDefault()
     console.log(formData)
-    fetch(`/volunteers/${id}`, {
+    fetch(`/opportunities/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
     })
       .then(res => {
         if (res.ok) {
-          res.json().then(updateVolunteer)
-          navigate('/volunteers')
+          res.json().then(updateOpportunity)
+          navigate('/opportunities')
         } else {
           res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
           alert('Please Contact Admin')
@@ -65,10 +67,16 @@ function EditVolunteerForm({ updateVolunteer }) {
         <label>About</label>
         <textarea type='text' rows='4' cols='50' name='about' value={formData.about} onChange={handleChange} />
 
-        <button type='submit'>Update Volunteer</button>
+        <label>Contact Name</label>
+        <textarea type='text' rows='4' cols='50' name='contact_name' value={formData.contact_name} onChange={handleChange} />
+
+        <label>Contact Email</label>
+        <textarea type='text' rows='4' cols='50' name='about' value={formData.contact_email} onChange={handleChange} />
+
+        <button type='submit'>Update Opportunity</button>
       </form>
     </div>
   )
 }
 
-export default EditVolunteerForm 
+export default EditOpportunityForm 

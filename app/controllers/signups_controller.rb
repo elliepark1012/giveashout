@@ -15,7 +15,6 @@ class SignupsController < ApplicationController
 
     def create
         signup = Signup.create(signup_params)
-        print "SIGNUP TITLE GOES HERE OMG #{signup.title}"
         render json: signup, status: :created
     end
 
@@ -34,6 +33,6 @@ class SignupsController < ApplicationController
 
 
     def signup_params
-        params.permit(:volunteer_id, :user_id, :donation, :participants, :extras)
+        params.permit(:volunteer_id, :user_id, :participants, :extras)
     end 
 end

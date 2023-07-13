@@ -2,30 +2,23 @@ import  { Link, useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import UserContext from '../UserContext';
 
-function SignupDetail({ deleteSignup }) {
+function SignupDetail({ deleteSignup, signups }) {
     const currentUser = useContext(UserContext);
-    const [signup, setSignup] = useState({})
+
     const [errors, setErrors] = useState()
-    const {id, participants, experience, names, title, price} = signup
-
-    const params = useParams()
+    const { id } = useParams();
     const navigate = useNavigate()
+  
+    console.log(currentUser)
 
+    const signup = signups.find(signup => signup.id === parseInt(id));
 
-    useEffect(() => {
-        fetch(`/signups/${params.id}`)
-        .then(res => {
-            if(res.ok){
-                res.json().then(data => setSignup(data))
-            } else {
-                res.json().then(data => setErrors(data.error))
-            }
-            console.log(params)
-        })
-    },[])
+    if (!signup) {
+      return <div>Sign Up not found</div>;
+    }
 
     function handleDelete(){
-        fetch(`/signups/${params.id}`,{
+        fetch(`/signups/${id}`,{
             method:'DELETE',
             headers: {'Content-Type': 'application/json'}
           })
@@ -46,11 +39,11 @@ function SignupDetail({ deleteSignup }) {
         <div>
                 <div className='carddetail'>
                     <div>
-                    <h1 className='cardlink'>{title}</h1>
-                    <p>price:{price}</p>
-                    <p>participants: {participants}</p>
-                    <p>experience: {experience}</p>    
-                    <p>Full Names: {names}</p>      
+      
+                    <h2 className='cardlink'>{signup.opportunity.title}</h2>
+                     <p>Donation $ {signup.donation}</p>
+                     <p>participants: Total {signup.participants}</p>
+                       <p>Who's Coming with you? {signup.extras} </p>    
                     </div>
 
                 <div className='button-container'>

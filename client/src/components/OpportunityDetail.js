@@ -7,6 +7,8 @@ function OpportunityDetail({ deleteOpportunity, setSignups, opportunities }) {
     const currentUser = useContext(UserContext);
     const { id } = useParams();
     const navigate = useNavigate()
+  
+    console.log(currentUser)
 
     const opportunity = opportunities.find(opportunity => opportunity.id === parseInt(id));
 
@@ -24,7 +26,6 @@ function OpportunityDetail({ deleteOpportunity, setSignups, opportunities }) {
               deleteOpportunity(id)
             } else {
               alert('Please Contact Admin')
-              res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
             }
             navigate('/opportunities')
           })
@@ -33,13 +34,11 @@ function OpportunityDetail({ deleteOpportunity, setSignups, opportunities }) {
     const addSignup = (signup) => {
       setSignups(current => [...current, signup])
     }
-
-    if(errors) return <h1>{errors}</h1>
-
+    
     return (
         <div>
               <div className='button-container'>
-                    <SignupforVolunteerForm addSignup={addSignup} opportunity_id={opportunity.id} user_id={currentUser.id} title={opportunity.title} />
+                 {currentUser?<SignupforVolunteerForm addSignup={addSignup} opportunity_id={opportunity.id} user_id={currentUser.id} title={opportunity.title} /> : null   }
               </div> 
               <div className='carddetail'>
                 <div>

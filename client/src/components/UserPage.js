@@ -3,6 +3,8 @@ import UserContext from '../UserContext';
 
 function UserPage( ) {
     const currentUser = useContext(UserContext);
+
+    console.log(currentUser)
     
     return (
         <div className="userpage">

@@ -48,25 +48,15 @@ Opportunity.create(
     contact_email: Faker::Internet.email
 )
 
-User.create(username:"ellie", email:"ellie@ellie.com", password_digest: BCrypt::Password.create('password'), admin: true)
-User.create(username:"josh", email:"josh@josh.com", password_digest: BCrypt::Password.create('password'), admin: false)
-User.create(username:"crystal", email:"crystal@crystal.com", password_digest: BCrypt::Password.create('password'), admin: false)
-User.create(username:"happy", email:"happy@happy.com", password_digest: BCrypt::Password.create('password'), admin: false)
+User.create(username:"ellie", email:"ellie@ellie.com", password: "ellie", admin: true)
+User.create(username:"josh", email:"josh@josh.com", password: "ellie", admin: false)
+User.create(username:"crystal", email:"crystal@crystal.com", password: "ellie", admin: false)
+User.create(username:"happy", email:"happy@happy.com", password: "ellie", admin: false)
 
-def generate_names
-    names = []
-  
-    2.times do
-      names << Faker::Name.name
-    end
-  
-    names
-  enextrasgnup.create(user_id:1, opportunity_id: 4, donation: 1, participants:3, extras: generate_names.join(' '))
-Signup.create(user_id:1, opportunity_id: 3, donation: 1, participants:3, extras: generate_names.join(' '))
-Signup.create(user_id:2, opportunity_id: 2, donation: 1, participants:3, extras: generate_names.join(' '))
-Signup.create(user_id:2, opportunity_id: 5, donation: 1, participants:3, extras: generate_names.join(' '))
-Signup.create(user_id:3, opportunity_id: 1, donation: 1, participants:3, extras: generate_names.join(' '))
-Signup.create(user_id:4, opportunity_id: 3, donation: 1, participants:3, extras: generate_names.join(' '))
+Signup.create(user_id:1, opportunity_id: 3, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:2, opportunity_id: 2, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:2, opportunity_id: 5, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:3, opportunity_id: 1, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:4, opportunity_id: 3, donation: 1, participants:2, extras: Faker::Name.name)
 
 
-end

@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function VolunteerForm({ addVolunteer }) {
+function OpportunityForm({ addOpportunity }) {
     const [formData, setFormData] = useState({
         title: '',
         date: '',
         location: '',
         about: '',
-        img_url: ''
+        img_url: '',
+        contact_name:'',
+        contact_email:''
     })
     const [errors, setErrors] = useState()
     const navigate = useNavigate()
@@ -19,15 +21,15 @@ function VolunteerForm({ addVolunteer }) {
 
     function onSubmit(e) {
         e.preventDefault()
-        fetch('/volunteers', {
+        fetch('/opportunities', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
         })
             .then(res => {
                 if (res.ok) {
-                    res.json().then(addVolunteer)
-                    navigate('/volunteers')
+                    res.json().then(addOpportunity)
+                    navigate('/opportunities')
                 }
                 else {
                     res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
@@ -58,10 +60,16 @@ function VolunteerForm({ addVolunteer }) {
                 <label>About</label>
                 <textarea type='text' rows='4' cols='50' name='about' value={formData.about} onChange={handleChange} />
 
-                <button type='submit'>Add New Volunteer</button>
+                <label>Contact Name</label>
+                <textarea type='text' rows='4' cols='50' name='contact_name' value={formData.contact_name} onChange={handleChange} />
+
+                <label>Contact Email</label>
+                <textarea type='text' rows='4' cols='50' name='about' value={formData.contact_email} onChange={handleChange} />
+
+                <button type='submit'>Add A New Volunteer Opportunity</button>
             </form>
         </div>
     )
 }
 
-export default VolunteerForm
+export default OpportunityForm

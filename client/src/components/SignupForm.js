@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function SignupForm({ addSignup, volunteer_id, user_id, title }) {
+function SignupForm({ addSignup, volunteer_id, user_id }) {
 
     const navigate = useNavigate() 
 
@@ -11,15 +11,13 @@ function SignupForm({ addSignup, volunteer_id, user_id, title }) {
        extras:'',
        user_id:user_id,
        volunteer_id:volunteer_id,
-       title: title
     })
 
-    console.log('OMFG', title)
 
 
     const handleChange = (e) => {
         const { name, value } = e.target
-        setFormData({ ...formData, [name]: value, title:title, volunteer_id:volunteer_id })
+        setFormData({ ...formData, [name]: value, volunteer_id:volunteer_id })
     }
 
     function onSubmit(e) {

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 
-function Login({updateUser}) {
+function Login({updateUser, updateSignups}) {
     const [username, setUsername] = useState ('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState ([])
@@ -24,8 +24,10 @@ function Login({updateUser}) {
         .then(res => {
             if(res.ok){
                 res.json().then(
-                    user=> updateUser(user))
-                navigate('/volunteers')
+                    user=> {updateUser(user);
+                            updateSignups(user.signups);
+                    })
+                navigate('/opportunities')
             } else {
                 res.json().then((errorData) => setErrors(Object.entries(errorData.errors).map(e=> `${e[0]} ${e[1]}`)));
             }

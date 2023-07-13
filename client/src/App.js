@@ -23,16 +23,15 @@ function App() {
   const [signups, setSignups] = useState([])
 
   const updateUser = (user) => setCurrentUser(user)
+  const updateSignups = (user) => setSignups(user.signups)  
   
   useEffect(() => {
       fetch('/me')
       .then(r => {
           if (r.ok) {
-          r.json().then((user) => updateUser(user));
+          r.json().then((user) => updateUser(user))
           } 
-          else {
-          r.json().then(data => setErrors(data.error))
-          }});
+        });
       }, [])
 
     useEffect(() => {
@@ -51,8 +50,7 @@ function App() {
         console.error('Error fetching opportunities:', error);
         });
       }, [])
-  
-      
+
 
   const addOpportunity = (opportunity) => {
        setOpportunities(current => [...current, opportunity])
@@ -71,7 +69,9 @@ function App() {
   
   const deleteOpportunity = (id) => setOpportunities(current => current.filter(o => o.id !== id))
 
-  if(errors) return <h1>{errors}</h1>
+
+  
+  // if(errors) return <h1>{errors}</h1>
 
   return (
     <UserContext.Provider value={currentUser}>  
@@ -81,15 +81,22 @@ function App() {
       <Routes>
         <Route exact path='/opportunities' element= {<Opportunities opportunities={opportunities} />} />
         <Route exact path='/opportunities/:id' element={<OpportunityDetail setSignups={setSignups} deleteOpportunity={deleteOpportunity} opportunities={opportunities} setOpportunities={setOpportunities}/>} />        
+        <Route path='/opportunities/new' element={ <OpportunityForm addOpportunity={addOpportunity}/>} /> 
+        <Route path='/opportunities/:id/edit' element={ <EditOpportunityForm updateOpportunity={updateOpportunity} />} /> 
         <Route path='/signups/new' element={ <SignupForm />} /> 
-        
         <Route exact path='/signups' element= {<Signups signups={signups} setSignups={setSignups} />} />
+
+
+
+
+        <Route exact path='/signups/:id' element={<SignupDetail signups={signups}  />} />
+
         <Route exact path='/users/:id' element= {<UserPage />} />
-        <Route exact path='/signups/:id' element={<SignupDetail  />} />
-        <Route exact path='/login' element={<Login updateUser={updateUser} />} />
+
+        <Route exact path='/login' element={<Login updateUser={updateUser} updateSignups={updateSignups} />} />
         <Route exact path='/' element={<Auth setCurrentUser={setCurrentUser} />} />
-        <Route path='/volunteers/new' element={ <VolunteerForm addVolunteer={addVolunteer}/>} /> 
-        <Route path='/volunteers/:id/edit' element={ <EditVolunteerForm updateVolunteer={updateVolunteer} />} /> 
+
+
 
         <Route path='/signups/:id/edit' element={ <EditSignupForm />} /> 
         <Route element={NotFound} />

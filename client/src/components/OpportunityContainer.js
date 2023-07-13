@@ -1,4 +1,5 @@
 import OpportunityCard from './OpportunityCard'
+import { Link } from 'react-router-dom'
 
 function OpportunityContainer({ opportunities, deleteOpportunity }) {
  
