@@ -3,14 +3,14 @@ import {Link} from 'react-router-dom'
 
 function SignupCard({signup}) {
     console.log(signup)
-    const {donation, participants, extras, id} = signup
+    const {title, donation, participants, extras, id} = signup
 
     console.log("SIGNUP:", signup)
 
     return (
         <Link className="cardlink" to={`/signups/${id}`}>
         <div className='card'>
-            <h2>{signup.opportunity.title}</h2>
+            <h2>{title}</h2>
             <p>Donation $ {donation}</p>
             <p>participants: Total {participants}</p>
             <p>Who's Coming with you? {extras} </p>              

@@ -4,12 +4,11 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 function EditSignupForm({ updateSignup, user_id, volunteer_id }) {
   const [formData, setFormData] = useState({
-       price:1,
-       experience:'',
-       participants:'',
-       names:'',
-       user_id:user_id,
-       volunteer_id:volunteer_id
+    donation:1,
+    participants:'',
+    extras:'',
+    user_id:user_id,
+    volunteer_id:volunteer_id,
   })
   const [errors, setErrors] = useState()
   const { id } = useParams()
@@ -47,25 +46,24 @@ function EditSignupForm({ updateSignup, user_id, volunteer_id }) {
 
   return (
 
-         <div className='signupformbox'>
+ <div className='signupformbox'>
 
-        <form onSubmit={onSubmit}>
+<form onSubmit={onSubmit}>
 
-            <h5>SIGN UP FOR THE VOLUNTEER</h5>
-             <h4>There's a $1 Donation Fee as a deposit for signing up! Thank you for your support.</h4>
-             {errors ? errors.map(e => <div className='error'>{e}</div>) : null}
-             <label>Participants</label>
-             <input type='number' name='participants' value={formData.participants} onChange={handleChange} />
+    <h5>SIGN UP FOR THE VOLUNTEER</h5>
+    <h4>There's a $1 Donation Fee as a deposit for signing up! Thank you for your support.</h4>
 
-             <label>Experiences</label>
-             <input type='number' name='experience' value={formData.experience} onChange={handleChange} />
-                 <br></br>
-             <label>Full Names of Participants</label>
-            <input className='nameinput' type='text' name='names' value={formData.names} onChange={handleChange} />
+    <label>Participants</label>
+    <input type='number' name='participants' value={formData.participants} onChange={handleChange} />
 
-            <button type='submit'>Sign Up for the volunteer</button>
-        </form>
+    <br></br>
+    <label>Full Names of Other Participants</label>
+    <input className='nameinput' type='text' name='extras' value={formData.extras} onChange={handleChange} />
+
+    <button type='submit'>Sign Up for the volunteer Opportunity</button>
+</form>
 </div>
+
   )
 }
 

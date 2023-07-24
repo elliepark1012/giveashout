@@ -52,9 +52,12 @@ function OpportunityDetail({ deleteOpportunity, setSignups, opportunities }) {
                 </div>
                     -------Admin Only------
                 <div className='button-container'>
+                  {currentUser.admin? <>
                     <button><Link className='buttonlink' to={'/opportunities/new'}>New Opportunities</Link></button>
                     <button><Link className='buttonlink' to={`/opportunities/${id}/edit`}>Edit Opportunity Detail</Link></button>
                     <button onClick={handleDelete}><Link to={`/opportunities`}>Delete Volunteer</Link></button>
+                    </> : 
+                  null}
                 </div> 
               </div>
         </div>

@@ -15,10 +15,10 @@ function UserPage( ) {
             {currentUser.signups.map(signup => (
 
             <div>
-                <h2>{signup.volunteer.title}</h2>
-                <h3>{signup.volunteer.date}</h3>
+                <h2>{signup.title}</h2>
+                <h3>{signup.}</h3>
                 <h3>{signup.volunteer.location}</h3>
-                <h3>Donation: {signup.price} (Donation cannot be refunded.)</h3>
+                <h3>Donation: {signup.donation} (Donation cannot be refunded.)</h3>
                 <h3>How many people coming with you? (including yourself): {signup.participants} people </h3>
                 <h3>Hoe many volunteer work did you do before? : {signup.experience} times </h3>
                 <h3>Full names of participants: {signup.names} </h3>

@@ -19,7 +19,7 @@ import SignupDetail from './components/SignupDetail';
 function App() {
   const [opportunities, setOpportunities] = useState([])
   const [errors, setErrors] = useState(false)
-  const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState({signups:[]})
   const [signups, setSignups] = useState([])
 
   const updateUser = (user) => setCurrentUser(user)
@@ -89,7 +89,7 @@ function App() {
 
 
 
-        <Route exact path='/signups/:id' element={<SignupDetail signups={signups}  />} />
+        <Route exact path='/signups/:id' element={<SignupDetail />} />
 
         <Route exact path='/users/:id' element= {<UserPage />} />
 

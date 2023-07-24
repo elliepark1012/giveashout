@@ -2,7 +2,7 @@ import  { Link, useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import UserContext from '../UserContext';
 
-function SignupDetail({ deleteSignup, signups }) {
+function SignupDetail({ deleteSignup }) {
     const currentUser = useContext(UserContext);
 
     const [errors, setErrors] = useState()
@@ -11,7 +11,7 @@ function SignupDetail({ deleteSignup, signups }) {
   
     console.log(currentUser)
 
-    const signup = signups.find(signup => signup.id === parseInt(id));
+    const signup = currentUser.signups.find(signup => signup.id === parseInt(id));
 
     if (!signup) {
       return <div>Sign Up not found</div>;
@@ -40,7 +40,7 @@ function SignupDetail({ deleteSignup, signups }) {
                 <div className='carddetail'>
                     <div>
       
-                    <h2 className='cardlink'>{signup.opportunity.title}</h2>
+                    <h2 className='cardlink'>{signup.title}</h2>
                      <p>Donation $ {signup.donation}</p>
                      <p>participants: Total {signup.participants}</p>
                        <p>Who's Coming with you? {signup.extras} </p>    

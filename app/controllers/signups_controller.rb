@@ -18,6 +18,12 @@ class SignupsController < ApplicationController
         render json: signup, status: :created
     end
 
+    def update 
+        signup = Signup.find(params[:id])
+        signup.update!(signup_params)
+        render json: signup, status: :accepted
+    end 
+
     def destroy
         signup = Signup.find_by(id: params[:id])
             if signup
