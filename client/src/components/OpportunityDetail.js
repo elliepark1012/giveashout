@@ -1,20 +1,15 @@
 import  { Link, useParams, useNavigate } from 'react-router-dom'
-import  { useContext, useState } from 'react'
+import  { useContext, useEffect, useState } from 'react'
 import UserContext from '../UserContext';
 import SignupForm from './SignupForm'
 
 function OpportunityDetail({ deleteOpportunity, opportunities, setOpportunities }) {
-    const currentUser = useContext(UserContext);
-    const [opportunity, setOpportunity] = useState();
+    const {currentUser, setCurrentUser} = useContext(UserContext);
     const { id } = useParams();
     const navigate = useNavigate();
 
-    const singleOpportunity = setOpportunity(opportunities.find(opportunity => opportunity.id === parseInt(id)));
-
-    if (!singleOpportunity) {
-      return <div>Opportunity not found</div>;
-    }
-
+    const opportunity = opportunities.find(opportunity => opportunity.id === parseInt(id));
+  
     function handleDelete(){
         fetch(`/opportunities/${id}`,{
             method:'DELETE',
@@ -23,6 +18,7 @@ function OpportunityDetail({ deleteOpportunity, opportunities, setOpportunities 
           .then(res => {
             if(res.ok){
               deleteOpportunity(id)
+              setOpportunities(opportunities)
             } else {
               alert('Please Contact Admin')
             }
@@ -31,14 +27,17 @@ function OpportunityDetail({ deleteOpportunity, opportunities, setOpportunities 
     }
 
     const addSignup = (signup) => {
-      const newSignups = [...singleOpportunity.signups, signup]
-      opportunity.signups = newSignups
+      const newSignups = [...currentUser.signups, signup]
+      const newUser = {...currentUser, signups: newSignups}
 
-      const filteredOpportunities = opportunities.filter(oppo => oppo.id !== signup.opportunity_id)
-      const newOpportunities = [...filteredOpportunities, opportunity]
+      setCurrentUser(newUser)
 
-      setOpportunity(opportunity)
-      setOpportunities(newOpportunities)
+      // const filteredOpportunities = opportunities.filter(oppo => oppo.id !== signup.opportunity_id)
+      // const newOpportunities = [...filteredOpportunities, opportunity]
+
+      // console.log(newOpportunities)
+
+      // setOpportunities(newOpportunities)
     }
  
     return (

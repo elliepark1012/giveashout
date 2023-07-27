@@ -21,7 +21,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState({signups:[]})
 
   const updateUser = (user) => setCurrentUser(user)
-  const updateSignups = (user) => setCurrentUser(user.signups)  
   
   useEffect(() => {
       fetch('/me')
@@ -67,18 +66,26 @@ function App() {
   
   const deleteOpportunity = (id) => setOpportunities(current => current.filter(o => o.id !== id))
 
-  // const addSignup = (signup) => {
-  //   setSignups(current => [...current, signup])
-  //   // 1. get the signups that the current user already has 
-  //     currentUser.signups
-  //   // 2. add new signup to that existing list 
-  //     setCurrentUser()
-  //   // 3. copy the user object signups key will need one more value 
-  //   // 4. 
-  // }
+  const deleteSignup = (id) => {
+    const newSignups = currentUser.signups.filter(s => s.id !== id)
+    const newUser = {...currentUser, signups: newSignups}
+
+    setCurrentUser(newUser)
+
+  }
+
+  //Delete and edit signup // 
+
+
+  const editSignup = (signup) => {
+    const newSignups = [...currentUser.signups, signup]
+    const newUser = {...currentUser, signups: newSignups}
+
+    setCurrentUser(newUser)
+  }
   
   return (
-    <UserContext.Provider value={currentUser}>  
+    <UserContext.Provider value={{currentUser, setCurrentUser}}>  
   <div id="app">
     <div>
       <Navbar  updateUser={updateUser} />
@@ -89,18 +96,15 @@ function App() {
         <Route path='/opportunities/:id/edit' element={ <EditOpportunityForm updateOpportunity={updateOpportunity} />} /> 
         <Route path='/signups/new' element={ <SignupForm />} /> 
         <Route exact path='/signups' element= {<Signups />} />
-
-
+        <Route path='/signups/:id/edit' element={ <EditSignupForm opportunities={opportunities} editSignup={editSignup} />} /> 
         <Route exact path='/signups/:id' element={<SignupDetail />} />
 
         <Route exact path='/users/:id' element= {<UserPage />} />
 
-        <Route exact path='/login' element={<Login updateUser={updateUser} updateSignups={updateSignups} />} />
+        <Route exact path='/login' element={<Login updateUser={updateUser}  />} />
         <Route exact path='/' element={<Auth setCurrentUser={setCurrentUser} />} />
-
-
-
-        <Route path='/signups/:id/edit' element={ <EditSignupForm />} /> 
+{/* 
+        <Route path='/signups/:id/edit' element={ <EditSignupForm />} />  */}
         <Route element={NotFound} />
       </Routes>
     </div>

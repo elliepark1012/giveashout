@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import UserContext from '../UserContext';
 
 function UserPage( ) {
-    const currentUser = useContext(UserContext);
+    const {currentUser} = useContext(UserContext);
 
     console.log(currentUser)
     
@@ -16,8 +16,7 @@ function UserPage( ) {
 
             <div>
                 <h2>{signup.title}</h2>
-                <h3>{signup.donation}</h3>
-                <h3>Donation: {signup.donation} (Donation cannot be refunded.)</h3>
+                <h3>Donation: $ {signup.donation} (Donation cannot be refunded.)</h3>
                 <h3>Full names of participants: {signup.extras} </h3>
             </div>
             ))}

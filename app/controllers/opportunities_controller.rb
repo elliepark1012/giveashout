@@ -12,7 +12,7 @@ class OpportunitiesController < ApplicationController
     end 
 
     def create
-        opportunity = Opportunity.create(opportunity_params)
+        opportunity = Opportunity.create!(opportunity_params)
         render json: opportunity, status: :created
     end 
 

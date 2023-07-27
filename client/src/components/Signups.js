@@ -2,18 +2,17 @@ import SignupContainer from './SignupContainer'
 import React, { useContext } from 'react';
 import UserContext from '../UserContext';
 
-function Signups({ setSignups }){
+function Signups({ }){
 
-  const currentUser = useContext(UserContext);
+  const {currentUser} = useContext(UserContext);
 
   console.log(currentUser)
 
- 
-  const deleteSignup = (id) => setSignups(current => current.filter(s => s.id !== id))
+
 
     return(
         <div>
-            <SignupContainer signups={currentUser.signups} deleteSignup={deleteSignup} />
+            <SignupContainer signups={currentUser.signups} />
         </div>
     )
 }

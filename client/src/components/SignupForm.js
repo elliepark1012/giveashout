@@ -11,6 +11,7 @@ function SignupForm({ addSignup, opportunity }) {
        donation: 1,
        opportunity_id: opportunity.id
     })
+    console.log(formData)
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -19,6 +20,7 @@ function SignupForm({ addSignup, opportunity }) {
 
     function onSubmit(e) {
         e.preventDefault()
+        console.log(formData)
         fetch('/signups', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

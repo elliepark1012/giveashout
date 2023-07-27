@@ -25,8 +25,7 @@ function Login({updateUser, updateSignups}) {
             if(res.ok){
                 res.json().then(
                     user=> {updateUser(user);
-                            updateSignups(user.signups);
-                    })
+                                })
                 navigate('/opportunities')
             } else {
                 res.json().then((errorData) => setErrors(Object.entries(errorData.errors).map(e=> `${e[0]} ${e[1]}`)));

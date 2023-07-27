@@ -2,17 +2,19 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 
-function EditSignupForm({ updateSignup, user_id, volunteer_id }) {
-  const [formData, setFormData] = useState({
-    donation:1,
-    participants:'',
-    extras:'',
-    user_id:user_id,
-    volunteer_id:volunteer_id,
-  })
-  const [errors, setErrors] = useState()
+function EditSignupForm({ editSignup, opportunities }) {
+
   const { id } = useParams()
   const navigate = useNavigate()
+
+  const opportunity = opportunities.find(opportunity => opportunity.id === parseInt(id));
+  
+  const [formData, setFormData] = useState({
+       participants:'',
+       extras:'',
+       donation: 1,
+       opportunity_id: opportunity.id
+  })
 
   useEffect(() => {
     fetch(`/signups/${id}`)
@@ -35,10 +37,10 @@ function EditSignupForm({ updateSignup, user_id, volunteer_id }) {
     })
       .then(res => {
         if (res.ok) {
-          res.json().then(updateSignup)
+          res.json().then(editSignup)
           navigate('/signups')
         } else {
-          res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
+          // res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
           alert('Please Contact Admin')
         }
       })

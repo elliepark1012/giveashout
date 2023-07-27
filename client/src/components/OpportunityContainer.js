@@ -10,7 +10,6 @@ function OpportunityContainer({ opportunities, deleteOpportunity }) {
                 {opportunities.map(opportunity => 
                   <li key={opportunity.id}>
                          <OpportunityCard 
-                            key={opportunity.id} 
                             opportunity={opportunity} 
                             deleteOpportunity={deleteOpportunity}/>
                    </li>
