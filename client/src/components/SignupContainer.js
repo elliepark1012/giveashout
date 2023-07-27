@@ -2,6 +2,8 @@ import SignupCard from './SignupCard'
 
 function SignupContainer({signups, deleteSignup }) {
 
+    console.log(signups)
+
     return(
         <div>
             <title className='title' >Give A Shout</title>

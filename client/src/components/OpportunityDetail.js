@@ -1,18 +1,17 @@
 import  { Link, useParams, useNavigate } from 'react-router-dom'
-import  { useContext } from 'react'
+import  { useContext, useState } from 'react'
 import UserContext from '../UserContext';
-import SignupforVolunteerForm from './SignupForm'
+import SignupForm from './SignupForm'
 
-function OpportunityDetail({ deleteOpportunity, setSignups, opportunities }) {
+function OpportunityDetail({ deleteOpportunity, opportunities, setOpportunities }) {
     const currentUser = useContext(UserContext);
+    const [opportunity, setOpportunity] = useState();
     const { id } = useParams();
-    const navigate = useNavigate()
-  
-    console.log(currentUser)
+    const navigate = useNavigate();
 
-    const opportunity = opportunities.find(opportunity => opportunity.id === parseInt(id));
+    const singleOpportunity = setOpportunity(opportunities.find(opportunity => opportunity.id === parseInt(id)));
 
-    if (!opportunity) {
+    if (!singleOpportunity) {
       return <div>Opportunity not found</div>;
     }
 
@@ -32,13 +31,20 @@ function OpportunityDetail({ deleteOpportunity, setSignups, opportunities }) {
     }
 
     const addSignup = (signup) => {
-      setSignups(current => [...current, signup])
+      const newSignups = [...singleOpportunity.signups, signup]
+      opportunity.signups = newSignups
+
+      const filteredOpportunities = opportunities.filter(oppo => oppo.id !== signup.opportunity_id)
+      const newOpportunities = [...filteredOpportunities, opportunity]
+
+      setOpportunity(opportunity)
+      setOpportunities(newOpportunities)
     }
-    
+ 
     return (
         <div>
               <div className='button-container'>
-                 {currentUser?<SignupforVolunteerForm addSignup={addSignup} opportunity_id={opportunity.id} user_id={currentUser.id} title={opportunity.title} /> : null   }
+                 {currentUser? <SignupForm opportunity={opportunity} addSignup={addSignup} /> : null   }
               </div> 
               <div className='carddetail'>
                 <div>

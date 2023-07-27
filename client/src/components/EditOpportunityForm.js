@@ -71,7 +71,7 @@ function EditOpportunityForm({ updateOpportunity }) {
         <textarea type='text' rows='4' cols='50' name='contact_name' value={formData.contact_name} onChange={handleChange} />
 
         <label>Contact Email</label>
-        <textarea type='text' rows='4' cols='50' name='about' value={formData.contact_email} onChange={handleChange} />
+        <textarea type='text' rows='4' cols='50' name='contact_email' value={formData.contact_email} onChange={handleChange} />
 
         <button type='submit'>Update Opportunity</button>
       </form>

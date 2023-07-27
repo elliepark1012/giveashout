@@ -18,12 +18,10 @@ import SignupDetail from './components/SignupDetail';
 
 function App() {
   const [opportunities, setOpportunities] = useState([])
-  const [errors, setErrors] = useState(false)
   const [currentUser, setCurrentUser] = useState({signups:[]})
-  const [signups, setSignups] = useState([])
 
   const updateUser = (user) => setCurrentUser(user)
-  const updateSignups = (user) => setSignups(user.signups)  
+  const updateSignups = (user) => setCurrentUser(user.signups)  
   
   useEffect(() => {
       fetch('/me')
@@ -34,7 +32,7 @@ function App() {
         });
       }, [])
 
-    useEffect(() => {
+  useEffect(() => {
         fetch('/opportunities')
         .then(res => {
             if (res.ok) {
@@ -69,10 +67,16 @@ function App() {
   
   const deleteOpportunity = (id) => setOpportunities(current => current.filter(o => o.id !== id))
 
-
+  // const addSignup = (signup) => {
+  //   setSignups(current => [...current, signup])
+  //   // 1. get the signups that the current user already has 
+  //     currentUser.signups
+  //   // 2. add new signup to that existing list 
+  //     setCurrentUser()
+  //   // 3. copy the user object signups key will need one more value 
+  //   // 4. 
+  // }
   
-  // if(errors) return <h1>{errors}</h1>
-
   return (
     <UserContext.Provider value={currentUser}>  
   <div id="app">
@@ -80,13 +84,11 @@ function App() {
       <Navbar  updateUser={updateUser} />
       <Routes>
         <Route exact path='/opportunities' element= {<Opportunities opportunities={opportunities} />} />
-        <Route exact path='/opportunities/:id' element={<OpportunityDetail setSignups={setSignups} deleteOpportunity={deleteOpportunity} opportunities={opportunities} setOpportunities={setOpportunities}/>} />        
+        <Route exact path='/opportunities/:id' element={<OpportunityDetail deleteOpportunity={deleteOpportunity} opportunities={opportunities} setOpportunities={setOpportunities}/>} />        
         <Route path='/opportunities/new' element={ <OpportunityForm addOpportunity={addOpportunity}/>} /> 
         <Route path='/opportunities/:id/edit' element={ <EditOpportunityForm updateOpportunity={updateOpportunity} />} /> 
         <Route path='/signups/new' element={ <SignupForm />} /> 
-        <Route exact path='/signups' element= {<Signups signups={signups} setSignups={setSignups} />} />
-
-
+        <Route exact path='/signups' element= {<Signups />} />
 
 
         <Route exact path='/signups/:id' element={<SignupDetail />} />

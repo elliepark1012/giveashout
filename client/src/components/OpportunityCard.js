@@ -5,8 +5,9 @@ function OpportunityCard( {opportunity} ) {
     const {title, date, location, about, img_url, id, contact_name, contact_email } = opportunity
 
     return (
-        <Link className="cardlink" to={`/opportunities/${id}`}>
         <div className='card'>
+        <Link className="cardlink" to={`/opportunities/${id}`}>
+  
             <img className='cardimage' src={img_url}/>
             <h2>{title}</h2>
             <p>Date: {date}</p>
@@ -14,8 +15,8 @@ function OpportunityCard( {opportunity} ) {
             <p>{about}</p> 
             <p>{contact_name}</p>
             <p>{contact_email}</p>             
-        </div>
         </Link>
+        </div>
     )
 }
 

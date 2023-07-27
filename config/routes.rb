@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :opportunities
+  resources :opportunities, only: [:index, :update, :show, :destroy, :create]
   resources :signups
   resources :users
 

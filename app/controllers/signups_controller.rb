@@ -14,18 +14,18 @@ class SignupsController < ApplicationController
 
 
     def create
-        signup = Signup.create(signup_params)
+        signup = current_user.signups.create(signup_params)
         render json: signup, status: :created
     end
 
     def update 
-        signup = Signup.find(params[:id])
+        signup = current_users.signups.find(params[:id])
         signup.update!(signup_params)
         render json: signup, status: :accepted
     end 
 
     def destroy
-        signup = Signup.find_by(id: params[:id])
+        signup = current_user.signups.find_by(id: params[:id])
             if signup
                 signup.destroy
                 head :no_content
@@ -37,8 +37,7 @@ class SignupsController < ApplicationController
 
     private
 
-
     def signup_params
-        params.permit(:volunteer_id, :user_id, :participants, :extras)
+        params.permit(:opportunity_id, :participants, :extras, :donation)
     end 
 end

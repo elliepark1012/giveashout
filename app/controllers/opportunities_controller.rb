@@ -31,7 +31,7 @@ class OpportunitiesController < ApplicationController
     private
     
     def opportunity_params
-        params.permit(:title, :date, :location, :about, :img_url)
+        params.permit(:title, :date, :location, :about, :img_url, :contact_name, :contact_email)
     end 
 
 end

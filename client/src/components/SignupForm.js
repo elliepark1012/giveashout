@@ -1,23 +1,20 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function SignupForm({ addSignup, volunteer_id, user_id }) {
+function SignupForm({ addSignup, opportunity }) {
 
     const navigate = useNavigate() 
 
     const [formData, setFormData] = useState({
-       donation:1,
        participants:'',
        extras:'',
-       user_id:user_id,
-       volunteer_id:volunteer_id,
+       donation: 1,
+       opportunity_id: opportunity.id
     })
-
-
 
     const handleChange = (e) => {
         const { name, value } = e.target
-        setFormData({ ...formData, [name]: value, volunteer_id:volunteer_id })
+        setFormData({ ...formData, [name]: value })
     }
 
     function onSubmit(e) {
