@@ -3,7 +3,7 @@ import { useState, useContext } from 'react'
 import UserContext from '../UserContext';
 
 function SignupDetail({ deleteSignup }) {
-    const {currentUser} = useContext(UserContext);
+    const {currentUser,setCurrentUser} = useContext(UserContext);
 
     const { id } = useParams();
     const navigate = useNavigate()
@@ -26,7 +26,6 @@ function SignupDetail({ deleteSignup }) {
             navigate('/signups')
           })
     }
-
 
       return (
         <div>

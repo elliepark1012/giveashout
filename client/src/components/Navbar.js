@@ -8,7 +8,6 @@ function NavBar( { updateUser } ) {
   const {currentUser} = useContext(UserContext);
   const navigate = useNavigate()
 
-  console.log(currentUser)
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {

@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 function EditSignupForm({ editSignup }) {
 
+  const [errors, setErrors] = useState([])
   const { id } = useParams()
   const navigate = useNavigate()
 
@@ -38,8 +39,8 @@ function EditSignupForm({ editSignup }) {
           res.json().then(editSignup)
           navigate('/signups')
         } else {
-          // res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
-          alert('Please Contact Admin')
+          res.json().then((errorData) => setErrors(Object.entries(errorData.errors).map(e=> `${e[0]} ${e[1]}`)));
+          alert('Please Fill Out all the section')
         }
       })
   }
@@ -59,7 +60,7 @@ function EditSignupForm({ editSignup }) {
     <br></br>
     <label>Full Names of Other Participants</label>
     <input className='nameinput' type='text' name='extras' value={formData.extras} onChange={handleChange} />
-
+    <div className='errorbox'>{errors?errors.map(e=> <div className='error'>{e}</div>):null}</div>
     <button type='submit'>Sign Up for the volunteer Opportunity</button>
 </form>
 </div>

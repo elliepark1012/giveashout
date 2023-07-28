@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 function SignupForm({ addSignup, opportunity }) {
 
+    const [errors, setErrors] = useState([])
     const navigate = useNavigate() 
 
     const [formData, setFormData] = useState({
@@ -33,7 +34,7 @@ function SignupForm({ addSignup, opportunity }) {
                     
                 }
                 else {
-                    res.json().then(data => console.log(data))
+                    res.json().then((errorData) => setErrors(Object.entries(errorData.errors).map(e=> `${e[0]} ${e[1]}`)));
                 }
             })
     }
@@ -54,6 +55,7 @@ function SignupForm({ addSignup, opportunity }) {
                 <input className='nameinput' type='text' name='extras' value={formData.extras} onChange={handleChange} />
 
                 <button type='submit'>Sign Up for the volunteer Opportunity</button>
+                <div className='errorbox'>{errors?errors.map(e=> <div className='error'>{e}</div>):null}</div>
             </form>
         </div>
     )

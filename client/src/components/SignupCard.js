@@ -7,7 +7,7 @@ function SignupCard({signup}) {
 
     return (
         <Link className="cardlink" to={`/signups/${id}`}>
-        <div className='card'>
+        <div key={id} className='card'>
             <h2>{title}</h2>
             <p>Donation $ {donation}</p>
             <p>participants: Total {participants}</p>

@@ -29,7 +29,7 @@ function App() {
           r.json().then((user) => updateUser(user))
           } 
         });
-      }, [setCurrentUser])
+      }, [])
 
   useEffect(() => {
         fetch('/opportunities')
@@ -64,25 +64,30 @@ function App() {
              })
            })
   
-  const deleteOpportunity = (id) => setOpportunities(current => current.filter(o => o.id !== id))
+  const deleteOpportunity = (id) => setOpportunities(current => current.filter(o => o.id !== parseInt(id)))
 
-  const deleteSignup = (id) => {
-    const newSignups = currentUser.signups.filter(s => s.id !== id)
-    const newUser = {...currentUser, signups: newSignups}
 
-    setCurrentUser(newUser)
+  const handleDeleteSignup = (id) => {
+    console.log(id)
+    const newSignups = currentUser.signups.filter(s => s.id !== parseInt(id)) 
+      const newUser = {...currentUser, signups: newSignups}
+    
+    setCurrentUser(newUser)   
   }
 
   const editSignup = (updatedSignup) => {
-    setCurrentUser(currentUser => {
-      return currentUser.signups.map(signup => {
+
+    const newSignups = currentUser.signups.map(signup => {
         if (signup.id === updatedSignup.id) {
           return updatedSignup;
         } else {
           return signup;
         }
       });
-    });
+
+    const newUser = {...currentUser, signups: newSignups}
+
+    setCurrentUser(newUser)
   }
 
   return (
@@ -98,7 +103,7 @@ function App() {
         <Route path='/signups/new' element={ <SignupForm />} /> 
         <Route exact path='/signups' element= {<Signups />} />
         <Route path='/signups/:id/edit' element={ <EditSignupForm opportunities={opportunities} editSignup={editSignup} />} /> 
-        <Route exact path='/signups/:id' element={<SignupDetail deleteSignup={deleteSignup}/>} />
+        <Route exact path='/signups/:id' element={<SignupDetail deleteSignup={handleDeleteSignup}/>} />
 
         <Route exact path='/users/:id' element= {<UserPage />} />
 
