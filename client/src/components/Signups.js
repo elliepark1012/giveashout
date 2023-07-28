@@ -2,13 +2,9 @@ import SignupContainer from './SignupContainer'
 import React, { useContext } from 'react';
 import UserContext from '../UserContext';
 
-function Signups({ }){
+function Signups(){
 
   const {currentUser} = useContext(UserContext);
-
-  console.log(currentUser)
-
-
 
     return(
         <div>

@@ -2,19 +2,17 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 
-function EditSignupForm({ editSignup, opportunities }) {
+function EditSignupForm({ editSignup }) {
 
   const { id } = useParams()
   const navigate = useNavigate()
 
-  const opportunity = opportunities.find(opportunity => opportunity.id === parseInt(id));
-  
   const [formData, setFormData] = useState({
        participants:'',
        extras:'',
-       donation: 1,
-       opportunity_id: opportunity.id
+       donation: 1
   })
+
 
   useEffect(() => {
     fetch(`/signups/${id}`)
@@ -29,7 +27,7 @@ function EditSignupForm({ editSignup, opportunities }) {
 
   function onSubmit(e) {
     e.preventDefault()
-    console.log(formData)
+    console.log(id)
     fetch(`/signups/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },

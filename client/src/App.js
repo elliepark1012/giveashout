@@ -29,7 +29,7 @@ function App() {
           r.json().then((user) => updateUser(user))
           } 
         });
-      }, [])
+      }, [setCurrentUser])
 
   useEffect(() => {
         fetch('/opportunities')
@@ -71,19 +71,20 @@ function App() {
     const newUser = {...currentUser, signups: newSignups}
 
     setCurrentUser(newUser)
-
   }
 
-  //Delete and edit signup // 
-
-
-  const editSignup = (signup) => {
-    const newSignups = [...currentUser.signups, signup]
-    const newUser = {...currentUser, signups: newSignups}
-
-    setCurrentUser(newUser)
+  const editSignup = (updatedSignup) => {
+    setCurrentUser(currentUser => {
+      return currentUser.signups.map(signup => {
+        if (signup.id === updatedSignup.id) {
+          return updatedSignup;
+        } else {
+          return signup;
+        }
+      });
+    });
   }
-  
+
   return (
     <UserContext.Provider value={{currentUser, setCurrentUser}}>  
   <div id="app">
@@ -97,14 +98,12 @@ function App() {
         <Route path='/signups/new' element={ <SignupForm />} /> 
         <Route exact path='/signups' element= {<Signups />} />
         <Route path='/signups/:id/edit' element={ <EditSignupForm opportunities={opportunities} editSignup={editSignup} />} /> 
-        <Route exact path='/signups/:id' element={<SignupDetail />} />
+        <Route exact path='/signups/:id' element={<SignupDetail deleteSignup={deleteSignup}/>} />
 
         <Route exact path='/users/:id' element= {<UserPage />} />
 
         <Route exact path='/login' element={<Login updateUser={updateUser}  />} />
         <Route exact path='/' element={<Auth setCurrentUser={setCurrentUser} />} />
-{/* 
-        <Route path='/signups/:id/edit' element={ <EditSignupForm />} />  */}
         <Route element={NotFound} />
       </Routes>
     </div>

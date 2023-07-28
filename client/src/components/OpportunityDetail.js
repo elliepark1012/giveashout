@@ -31,13 +31,6 @@ function OpportunityDetail({ deleteOpportunity, opportunities, setOpportunities 
       const newUser = {...currentUser, signups: newSignups}
 
       setCurrentUser(newUser)
-
-      // const filteredOpportunities = opportunities.filter(oppo => oppo.id !== signup.opportunity_id)
-      // const newOpportunities = [...filteredOpportunities, opportunity]
-
-      // console.log(newOpportunities)
-
-      // setOpportunities(newOpportunities)
     }
  
     return (

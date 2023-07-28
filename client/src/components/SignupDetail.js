@@ -2,15 +2,15 @@ import  { Link, useParams, useNavigate } from 'react-router-dom'
 import { useState, useContext } from 'react'
 import UserContext from '../UserContext';
 
-function SignupDetail({ deleteSignup, editSignup }) {
+function SignupDetail({ deleteSignup }) {
     const {currentUser} = useContext(UserContext);
 
-    const [errors, setErrors] = useState()
     const { id } = useParams();
     const navigate = useNavigate()
 
     const signup = currentUser.signups.find(signup => signup.id === parseInt(id));
-    
+
+    console.log(signup)
     function handleDelete(){
         fetch(`/signups/${id}`,{
             method:'DELETE',
@@ -21,13 +21,12 @@ function SignupDetail({ deleteSignup, editSignup }) {
               deleteSignup(id)
             } else {
               alert('Please Contact Admin')
-              res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
+              res.json().then(data => console.log(data))
             }
             navigate('/signups')
           })
     }
 
-      if(errors) return <h1>{errors}</h1>
 
       return (
         <div>

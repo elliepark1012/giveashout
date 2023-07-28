@@ -5,9 +5,10 @@ import UserContext from '../UserContext';
 
 function NavBar( { updateUser } ) {
 
-  const currentUser = useContext(UserContext);
+  const {currentUser} = useContext(UserContext);
   const navigate = useNavigate()
-  
+
+  console.log(currentUser)
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
@@ -18,13 +19,14 @@ function NavBar( { updateUser } ) {
     })
   }
 
+
     return (
         <>
           <div className="navbar">
             <ul>
                 <li><Link className="navlink" to='/'> Home</Link></li>
                 <li><Link className="navlink" to='/opportunities'>Opportunities</Link></li>   
-                {!currentUser? (<></>
+                {!currentUser.username? (<></>
                 ) : (
                 <>
                 <li><Link className="navlink" to='/users/:id'> My Work</Link></li>

@@ -17,9 +17,9 @@ class SignupsController < ApplicationController
         signup = current_user.signups.create(signup_params)
         render json: signup, status: :created
     end
-    
+
     def update 
-        signup = current_users.signups.find(params[:id])
+        signup = current_user.signups.find(params[:id])
         signup.update!(signup_params)
         render json: signup, status: :accepted
     end 

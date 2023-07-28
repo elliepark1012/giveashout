@@ -2,10 +2,8 @@ import {Link} from 'react-router-dom'
 
 
 function SignupCard({signup}) {
-    console.log(signup)
     const {title, donation, participants, extras, id} = signup
 
-    console.log("SIGNUP:", signup)
 
     return (
         <Link className="cardlink" to={`/signups/${id}`}>

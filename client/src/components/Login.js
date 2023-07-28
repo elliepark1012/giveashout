@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 
-function Login({updateUser, updateSignups}) {
+function Login({updateUser}) {
     const [username, setUsername] = useState ('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState ([])
