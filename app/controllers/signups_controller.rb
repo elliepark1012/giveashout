@@ -34,6 +34,19 @@ class SignupsController < ApplicationController
             end
      end
 
+     def number
+        #  /signups/3 => {partipants is at least 3 signups}
+        # 1. map signups get the numbers of participants 2. compare it with number 3. return opportunity that related to the ones 
+        signupsArray = current_user.signups.filter {|s| s.participants >= params[:num].to_i}
+        opportunities = signupsArray.map{|s| s.opportunity}
+        if  opportunities.empty?   
+            render json: { error: "No Sign up matched"}
+            
+        else 
+            render json: opportunities, status: :ok
+        end
+     end 
+
 
     private
 

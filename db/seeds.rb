@@ -98,32 +98,52 @@ Opportunity.create(
     contact_email: Faker::Internet.email
 )
 
-User.create(username:"ellie", email:"ellie@ellie.com", password: "ellie", admin: true)
-User.create(username:"josh", email:"josh@josh.com", password: "ellie", admin: false)
-User.create(username:"crystal", email:"crystal@crystal.com", password: "ellie", admin: false)
-User.create(username:"happy", email:"happy@happy.com", password: "ellie", admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
-User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
 
-
-
+User.create(username:"ellie", email:"ellie@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: true)
+User.create(username:"josh", email:"josh@josh.com", password: "ellie", password_confirmation: "ellie", admin: false)
+User.create(username:"crystal", email:"crystal@crystal.com", password: "ellie", password_confirmation: "ellie", admin: false)
+User.create(username:"happy", email:"happy@happy.com", password: "ellie", password_confirmation: "ellie", admin: false)
+User.create(username:"hayward", email:"hayward@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"aleale", email:"aleale@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"timtim", email:"timtim@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"kelli", email:"kelli@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"cook", email:"cook@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"jooah", email:"jooah@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"jerry", email:"jerry@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"marley", email:"marley@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"mmmmmm", email:"mmmmmm@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"bessi", email:"bessi@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"david", email:"david@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"john", email:"john@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"karvin", email:"karvin@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"siri", email:"siri@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"apple", email:"apple@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"banana", email:"banana@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"hello", email:"hello@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"korean", email:"korean@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"francais", email:"francais@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
+User.create(username:"kiki", email:"kiki@ellie.com", password: "ellie", password_confirmation: "ellie",
+admin: false)
 Signup.create(user_id:1, opportunity_id: 3, donation: 1, participants:2, extras: Faker::Name.name)
 Signup.create(user_id:2, opportunity_id: 2, donation: 1, participants:2, extras: Faker::Name.name)
 Signup.create(user_id:2, opportunity_id: 5, donation: 1, participants:2, extras: Faker::Name.name)
