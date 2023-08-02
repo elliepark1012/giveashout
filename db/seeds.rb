@@ -48,15 +48,105 @@ Opportunity.create(
     contact_email: Faker::Internet.email
 )
 
+Opportunity.create(
+    title: "Documentary Film Camp in New York",
+    date: "Jun 26, 2023, 9:30 AM - Jun 30, 2023, 3:00 PM EDT",
+    location: "Theater 54, NY",
+    about: "Documentary Film Camp is chance for young people to learn Writing, Producing, Directing, Lighting, and Sound.  On camp days you will be a mentor and guide as youth particpate in various events. Each day of camp is from 9:30am - 3:00pm.  If you are unable to particapte for the full day arrgamgngets can be made to support indivudal activities.",
+    img_url: "https://d6osdab9etm5d.cloudfront.net/client_data/apple.benevity.org/files/imagecache/wpg_1080x250/userfile-64806b703dae21.27390428.png",
+    contact_name: Faker::Name.name,
+    contact_email: Faker::Internet.email
+)
+
+Opportunity.create(
+    title: "Documentary Film Camp in LA",
+    date: "Jun 26, 2023, 9:30 AM - Jun 30, 2023, 3:00 PM EDT",
+    location: "Holloywood, LA",
+    about: "Documentary Film Camp is chance for young people to learn Writing, Producing, Directing, Lighting, and Sound.  On camp days you will be a mentor and guide as youth particpate in various events. Each day of camp is from 9:30am - 3:00pm.  If you are unable to particapte for the full day arrgamgngets can be made to support indivudal activities.",
+    img_url: "https://d6osdab9etm5d.cloudfront.net/client_data/apple.benevity.org/files/imagecache/wpg_1080x250/userfile-64806b703dae21.27390428.png",
+    contact_name: Faker::Name.name,
+    contact_email: Faker::Internet.email
+)
+
+Opportunity.create(
+    title: "Documentary Film Camp in Chicago",
+    date: "Jun 26, 2023, 9:30 AM - Jun 30, 2023, 3:00 PM EDT",
+    location: "Chicago Library, 10101",
+    about: "Documentary Film Camp is chance for young people to learn Writing, Producing, Directing, Lighting, and Sound.  On camp days you will be a mentor and guide as youth particpate in various events. Each day of camp is from 9:30am - 3:00pm.  If you are unable to particapte for the full day arrgamgngets can be made to support indivudal activities.",
+    img_url: "https://d6osdab9etm5d.cloudfront.net/client_data/apple.benevity.org/files/imagecache/wpg_1080x250/userfile-64806b703dae21.27390428.png",
+    contact_name: Faker::Name.name,
+    contact_email: Faker::Internet.email
+)
+
+Opportunity.create(
+    title: "Documentary Film Camp in Upstate NY",
+    date: "Jun 26, 2023, 9:30 AM - Jun 30, 2023, 3:00 PM EDT",
+    location: "Catskill Theater, NY 12222",
+    about: "Documentary Film Camp is chance for young people to learn Writing, Producing, Directing, Lighting, and Sound.  On camp days you will be a mentor and guide as youth particpate in various events. Each day of camp is from 9:30am - 3:00pm.  If you are unable to particapte for the full day arrgamgngets can be made to support indivudal activities.",
+    img_url: "https://d6osdab9etm5d.cloudfront.net/client_data/apple.benevity.org/files/imagecache/wpg_1080x250/userfile-64806b703dae21.27390428.png",
+    contact_name: Faker::Name.name,
+    contact_email: Faker::Internet.email
+)
+
+Opportunity.create(
+    title: "Documentary Film Camp in Boston",
+    date: "Jun 26, 2023, 9:30 AM - Jun 30, 2023, 3:00 PM EDT",
+    location: "Harvard University",
+    about: "Documentary Film Camp is chance for young people to learn Writing, Producing, Directing, Lighting, and Sound.  On camp days you will be a mentor and guide as youth particpate in various events. Each day of camp is from 9:30am - 3:00pm.  If you are unable to particapte for the full day arrgamgngets can be made to support indivudal activities.",
+    img_url: "https://d6osdab9etm5d.cloudfront.net/client_data/apple.benevity.org/files/imagecache/wpg_1080x250/userfile-64806b703dae21.27390428.png",
+    contact_name: Faker::Name.name,
+    contact_email: Faker::Internet.email
+)
+
 User.create(username:"ellie", email:"ellie@ellie.com", password: "ellie", admin: true)
 User.create(username:"josh", email:"josh@josh.com", password: "ellie", admin: false)
 User.create(username:"crystal", email:"crystal@crystal.com", password: "ellie", admin: false)
 User.create(username:"happy", email:"happy@happy.com", password: "ellie", admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+User.create(username:Faker::Name.name, email:Faker::Internet.email, password: Faker::Internet.password, admin: false)
+
+
 
 Signup.create(user_id:1, opportunity_id: 3, donation: 1, participants:2, extras: Faker::Name.name)
 Signup.create(user_id:2, opportunity_id: 2, donation: 1, participants:2, extras: Faker::Name.name)
 Signup.create(user_id:2, opportunity_id: 5, donation: 1, participants:2, extras: Faker::Name.name)
 Signup.create(user_id:3, opportunity_id: 1, donation: 1, participants:2, extras: Faker::Name.name)
 Signup.create(user_id:4, opportunity_id: 3, donation: 1, participants:2, extras: Faker::Name.name)
-
-
+Signup.create(user_id:5, opportunity_id: 3, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:6, opportunity_id: 2, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:7, opportunity_id: 3, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:8, opportunity_id: 6, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:9, opportunity_id: 5, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:10, opportunity_id: 2, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:11, opportunity_id: 1, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:12, opportunity_id: 9, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:13, opportunity_id: 8, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:14, opportunity_id: 7, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:15, opportunity_id: 6, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:16, opportunity_id: 5, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:17, opportunity_id: 4, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:18, opportunity_id: 3, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:19, opportunity_id: 2, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:20, opportunity_id: 1, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:21, opportunity_id: 3, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:22, opportunity_id: 2, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:10, opportunity_id: 3, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:11, opportunity_id: 4, donation: 1, participants:2, extras: Faker::Name.name)
+Signup.create(user_id:1, opportunity_id: 5, donation: 1, participants:2, extras: Faker::Name.name)
