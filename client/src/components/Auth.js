@@ -1,7 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useContext } from 'react'
+import UserContext from '../UserContext';
 import {useNavigate, Link} from 'react-router-dom'
 
-function Auth({setCurrentUser}) {
+function Auth() {
+    const {setCurrentUser} = useContext(UserContext);
 
     const [errors, setErrors] = useState([])
     const navigate = useNavigate()
@@ -39,7 +41,7 @@ function Auth({setCurrentUser}) {
                     password_confirmation: ''
                 })
                 res.json().then(setCurrentUser)
-                navigate(`/users/${userCreds.id}`)
+                navigate('/opportunities')
                 }
             else {
                 res.json().then((errorData) => setErrors(Object.entries(errorData.errors).map(e => `${e[0]} ${e[1]}`)))

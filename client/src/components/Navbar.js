@@ -28,7 +28,7 @@ function NavBar( { updateUser } ) {
                 {!currentUser.username? (<></>
                 ) : (
                 <>
-                <li><Link className="navlink" to='/users/:id'> My Work</Link></li>
+                <li><Link className="navlink" to='/users/detail'> My Work</Link></li>
                 <li><Link className="navlink" to='/signups'>My signups</Link></li>
                 <button className="signout" onClick={handleLogoutClick}>Sign out</button>
                 </>

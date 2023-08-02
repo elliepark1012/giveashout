@@ -11,13 +11,13 @@ function UserPage( ) {
         <h1>Hello, {currentUser.username} !</h1>
         <h2> {currentUser.email}</h2>
         <h1> Your Volunteer List</h1>
-        <ul>
-            {currentUser.signups.map(signup => (
 
+        <ul>
+            {currentUser.opportunities.map(opportunity => (
             <div>
-                <h2>{signup.title}</h2>
-                <h3>Donation: $ {signup.donation} (Donation cannot be refunded.)</h3>
-                <h3>Full names of participants: {signup.extras} </h3>
+                <h2>{opportunity.title}</h2>
+                <h3>Contact Info {opportunity.contact_name} </h3>
+                <h3>{opportunity.contact_email} </h3>
             </div>
             ))}
         </ul>

@@ -27,8 +27,9 @@ function OpportunityDetail({ deleteOpportunity, opportunities, setOpportunities 
     }
 
     const addSignup = (signup) => {
+      const newOpportunities = [...currentUser.opportunities, opportunity]
       const newSignups = [...currentUser.signups, signup]
-      const newUser = {...currentUser, signups: newSignups}
+      const newUser = {...currentUser, signups: newSignups, opportunities: newOpportunities}
 
       setCurrentUser(newUser)
     }

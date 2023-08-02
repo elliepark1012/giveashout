@@ -66,15 +66,14 @@ function App() {
   
   const deleteOpportunity = (id) => setOpportunities(current => current.filter(o => o.id !== parseInt(id)))
 
-
   const handleDeleteSignup = (id) => {
-    console.log(id)
-    const newSignups = currentUser.signups.filter(s => s.id !== parseInt(id)) 
-      const newUser = {...currentUser, signups: newSignups}
-    
-    setCurrentUser(newUser)   
-  }
-
+    const signup = currentUser.signups.find(s => parseInt(id) === s.id);
+    const newOpportunities = currentUser.opportunities.filter(o => o.id !== signup.opportunity_id);
+    const newSignups = currentUser.signups.filter(s => s.id !== parseInt(id));
+    const newUser = {...currentUser, opportunities: newOpportunities, signups: newSignups};
+    setCurrentUser(newUser);
+  };
+  
   const editSignup = (updatedSignup) => {
 
     const newSignups = currentUser.signups.map(signup => {
@@ -105,7 +104,7 @@ function App() {
         <Route path='/signups/:id/edit' element={ <EditSignupForm opportunities={opportunities} editSignup={editSignup} />} /> 
         <Route exact path='/signups/:id' element={<SignupDetail deleteSignup={handleDeleteSignup}/>} />
 
-        <Route exact path='/users/:id' element= {<UserPage />} />
+        <Route exact path='/users/detail' element= {<UserPage />} />
 
         <Route exact path='/login' element={<Login updateUser={updateUser}  />} />
         <Route exact path='/' element={<Auth setCurrentUser={setCurrentUser} />} />
