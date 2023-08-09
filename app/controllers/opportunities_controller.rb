@@ -23,10 +23,19 @@ class OpportunitiesController < ApplicationController
     end 
 
     def destroy
-        opportunity = Opportunity.find(params[:id])
+        opportunities = Opportunity.find_by(params[:id])
         opportunity.destroy
         head :no_content 
     end 
+
+    # find opportunities map location / filter location = params [:location] check if it's same as ":location"
+
+   def location
+        # locationArray = Opportunity.all.map {|o| o.location}
+        # if  
+        opportunities = Opportunity.find_by()
+   end 
+
 
     private
     

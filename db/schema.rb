@@ -17,6 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_183431) do
     t.string "location"
     t.string "about"
     t.string "img_url"
+    t.integer "expected_donation"
     t.string "contact_name"
     t.string "contact_email"
     t.datetime "created_at", null: false
